@@ -1,7 +1,8 @@
-<!--
-/* Interest calculations
+/* Interest calculator
  * ---
- * Written by George D. Sotirov (gsotirov@obs.bg)
+ * Written by George D. Sotirov (gdsotirov@dir.bg)
+ * Version: 0.1.0
+ * $Id: icc.js,v 1.2 2005/04/20 18:53:47 gsotirov Exp $
  */
 
 /* Function   : calc_interest
@@ -30,4 +31,3 @@ function calc_interest(amount, type, interest, period) {
   }
   return Rows;
 }
-//-->
