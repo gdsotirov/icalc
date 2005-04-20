@@ -1,4 +1,10 @@
-<!--
+/* Interest calculator Web Interface
+ * ---
+ * Written by George D. Sotirov (gdsotirov@dir.bg)
+ * Version: 0.1.1
+ * $Id: icalc.js,v 1.2 2005/04/20 18:51:00 gsotirov Exp $
+ */
+
 var uisPlsFillAmount = 0;
 var uisPlsCorrAmount = 1;
 var uisPlsFillInterest = 2;
@@ -75,26 +81,6 @@ function doReset() {
   OutputTable.innerHTML = "";
 }
 
-/*function showCC() {
-  var imgCC = document.getElementById("CurCode");
-  var sel = document.forms.CalcForm.Currency.value;
-
-  switch ( sel ) {
-    case "BGN" :
-      imgCC.src = "bgn.gif";
-      imgCC.alt = "BGN";
-      break;
-    case "USD" :
-      imgCC.src = "usd.gif";
-      imgCC.alt = "USD";
-      break;
-    case "EUR" :
-      imgCC.src = "eur.gif";
-      imgCC.alt = "EUR";
-      break;
-  }
-}*/
-
 function checkForm() {
   var form = document.forms.CalcForm;
 
@@ -122,33 +108,48 @@ function doCalc() {
   var period = parseInt(form.Period.value);
 
   var OutputTable = document.getElementById("OutputTable");
-  var Header = makeTableHeader();
-  var RowsCode = "";
+  OutputTable.innerHTML = "";
+  makeTableHeader(OutputTable);
   var Rows = calc_interest(amount, type, interest, period);
+
   for ( var i = 1; i < Rows.length; ++i ) {
     var Row = Rows[i];
-    RowsCode += makeTableRow(Row[0], Row[1], Row[2]);
+    makeTableRow(OutputTable, Row[0], Row[1], Row[2]);
   }
-  OutputTable.innerHTML = Header + RowsCode;
+
   return true;
 }
 
-function makeTableHeader() {
-  var header = "<tr>\n";
+function makeTableHeader(otable) {
   var cur = document.forms.CalcForm.Currency.value;
-  header += "<th width=\"15%\">" + loadUIString(uisMonth) + "</th>\n";
-  header += "<th width=\"55%\">" + sprintf("%s, %s", loadUIString(uisAccumulated), cur) + "</th>\n";
-  header += "<th>" + sprintf("%s, %s", loadUIString(uisProfit), cur) + "</th>\n";
-  header += "</tr>\n";
-  return header;
+  var new_tr = document.createElement("tr");
+  var new_th1 = document.createElement("th");
+  var new_th2 = document.createElement("th");
+  var new_th3 = document.createElement("th");
+
+  new_th1.setAttribute("width", "15%");
+  new_th1.innerHTML = loadUIString(uisMonth);
+  new_th2.setAttribute("widht", "55%");
+  new_th2.innerHTML = sprintf("%s, %s", loadUIString(uisAccumulated), cur);
+  new_th3.innerHTML = sprintf("%s, %s", loadUIString(uisProfit), cur);
+  new_tr.appendChild(new_th1);
+  new_tr.appendChild(new_th2);
+  new_tr.appendChild(new_th3);
+  otable.appendChild(new_tr);
 }
 
-function makeTableRow(month, gain, interest) {
-  var row = "<tr>\n";
-  row += "<td>" + sprintf("%d", month) + "</td>\n";
-  row += "<td>" + sprintf("%9.2f", gain) + "</td>\n";
-  row += "<td>" + sprintf("%9.2f", interest) + "</td>\n";
-  row += "</tr>\n";
-  return row;
+function makeTableRow(otable, month, gain, interest) {
+  var new_row = otable.create
+  var new_tr = document.createElement("tr");
+  var new_td1 = document.createElement("td");
+  var new_td2 = document.createElement("td");
+  var new_td3 = document.createElement("td");
+
+  new_td1.innerHTML = sprintf("%d", month);
+  new_td2.innerHTML = sprintf("%3.2f", gain);
+  new_td3.innerHTML = sprintf("%3.2f", interest);
+  new_tr.appendChild(new_td1);
+  new_tr.appendChild(new_td2);
+  new_tr.appendChild(new_td3);
+  otable.appendChild(new_tr);
 }
-//-->
