@@ -2,7 +2,7 @@
  * ---
  * Written by George D. Sotirov (gdsotirov@dir.bg)
  * Version: 0.1.1
- * $Id: icalc.js,v 1.2 2005/04/20 18:51:00 gsotirov Exp $
+ * $Id: icalc.js,v 1.3 2005/05/23 20:53:34 gsotirov Exp $
  */
 
 var uisPlsFillAmount = 0;
@@ -15,6 +15,7 @@ var uisPeriodError = 6;
 var uisMonth = 7;
 var uisAccumulated = 8;
 var uisProfit = 9;
+var uisProfitAcc = 10;
 
 var UIStringsBG = new Array(
 /*  0 */ "Моля, попълнете полето Сума!",
@@ -27,6 +28,7 @@ var UIStringsBG = new Array(
 /*  7 */ "Месец",
 /*  8 */ "Натрупване",
 /*  9 */ "Печалба"
+/* 10 */ "Печалба натрупване"
 );
 
 var UIStringsEN = new Array(
@@ -39,7 +41,8 @@ var UIStringsEN = new Array(
 /*  6 */ "The period of the deposit must be multiple to the month count in the type of the deposit!",
 /*  7 */ "Month",
 /*  8 */ "Accumulated",
-/*  9 */ "Profit"
+/*  9 */ "Profit",
+/* 10 */ "Profit accumulation"
 );
 
 function loadUIString(id) {
@@ -62,6 +65,7 @@ function checkField(fld, type, uisFill, uisCorr) {
     fld.focus();
     return false;
   }
+
   if ( type != "string" ) {
     if ( type == "float" )
       val = parseFloat(fld.value);
@@ -73,6 +77,7 @@ function checkField(fld, type, uisFill, uisCorr) {
       return false;
     }
   }
+
   return true;
 }
 
@@ -84,19 +89,31 @@ function doReset() {
 function checkForm() {
   var form = document.forms.CalcForm;
 
-  if ( !checkField(form.Amount, "float", uisPlsFillAmount, uisPlsCorrAmount) )
+  if ( !checkField(form.Amount, "float", uisPlsFillAmount, uisPlsCorrAmount) ) {
+    doReset();
     return false;
-  if ( !checkField(form.Interest, "float", uisPlsFillInterest, uisPlsCorrInterest) )
+  }
+
+  if ( !checkField(form.Interest, "float", uisPlsFillInterest, uisPlsCorrInterest) ) {
+    doReset();
     return false;
-  if ( !checkField(form.Period, "int", uisPlsFillPeriod, uisPlsCorrPeriod) )
+  }
+
+  if ( !checkField(form.Period, "int", uisPlsFillPeriod, uisPlsCorrPeriod) ) {
+    doReset();
     return false;
+  }
+
   var Period = parseInt(form.Period.value);
   var Type = parseInt(form.Type.value);
+
   if ( Period % Type ) {
      alert(loadUIString(uisPeriodError));
      form.Period.focus();
+     doReset();
      return false;
   }
+
   return true;
 }
 
@@ -114,7 +131,7 @@ function doCalc() {
 
   for ( var i = 1; i < Rows.length; ++i ) {
     var Row = Rows[i];
-    makeTableRow(OutputTable, Row[0], Row[1], Row[2]);
+    makeTableRow(OutputTable, Row[0], Row[1], Row[2], Row[3]);
   }
 
   return true;
@@ -126,30 +143,36 @@ function makeTableHeader(otable) {
   var new_th1 = document.createElement("th");
   var new_th2 = document.createElement("th");
   var new_th3 = document.createElement("th");
+  var new_th4 = document.createElement("th");
 
   new_th1.setAttribute("width", "15%");
   new_th1.innerHTML = loadUIString(uisMonth);
   new_th2.setAttribute("widht", "55%");
   new_th2.innerHTML = sprintf("%s, %s", loadUIString(uisAccumulated), cur);
   new_th3.innerHTML = sprintf("%s, %s", loadUIString(uisProfit), cur);
+  new_th4.innerHTML = sprintf("%s, %s", loadUIString(uisProfitAcc), cur);
   new_tr.appendChild(new_th1);
   new_tr.appendChild(new_th2);
   new_tr.appendChild(new_th3);
+  new_tr.appendChild(new_th4);
   otable.appendChild(new_tr);
 }
 
-function makeTableRow(otable, month, gain, interest) {
+function makeTableRow(otable, month, gain, interest, profitacc) {
   var new_row = otable.create
   var new_tr = document.createElement("tr");
   var new_td1 = document.createElement("td");
   var new_td2 = document.createElement("td");
   var new_td3 = document.createElement("td");
+  var new_td4 = document.createElement("td");
 
   new_td1.innerHTML = sprintf("%d", month);
   new_td2.innerHTML = sprintf("%3.2f", gain);
   new_td3.innerHTML = sprintf("%3.2f", interest);
+  new_td4.innerHTML = sprintf("%3.2f", profitacc);
   new_tr.appendChild(new_td1);
   new_tr.appendChild(new_td2);
   new_tr.appendChild(new_td3);
+  new_tr.appendChild(new_td4);
   otable.appendChild(new_tr);
 }
