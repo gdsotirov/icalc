@@ -12,7 +12,7 @@
 <meta name="robots" content="INDEX, FOLLOW" />
 <meta name="robots" content="NOARCHIVE" />
 <meta name="author" content="George D. Sotirov" />
-<meta name="CVS" content="$Id: index.en.html,v 1.3 2005/04/20 18:36:42 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.en.html,v 1.4 2005/05/24 09:21:00 gsotirov Exp $" />
 <meta name="version" content="0.1.0" />
 <title>Interest calculator</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" type="text/css" />
@@ -39,7 +39,7 @@
 <a href="index.bg.html" hreflang="bg" lang="bg">Български</a>
 </p>
 
-<form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post"
+<form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post" name="CalcForm"
 onsubmit="javascript: return false" onreset="javascript: doReset();">
 <table id="CalcTable">
 <tbody>
@@ -54,10 +54,15 @@ Choose currency and period of the deposit in months.</td>
 <td>&nbsp;</td>
 <td>
 <input name="Amount" type="text" size="16" maxlength="16" />&nbsp;
-<select name="Currency" onchange="javascript: showCC();">
-<option selected="selected" value="USD">US Dollar, USD, $</option>
-<option value="BGN">Bulgarian lev, BGN</option>
-<option value="EUR">Euro, EUR, &euro;</option>
+<select name="Currency" onchange="javascript: changeInterest(
+document.forms.CalcForm.Type.value,
+document.forms.CalcForm.Currency.value,
+document.forms.CalcForm.Interest);">
+<option selected="selected" value="BGN">&nbsp; BGN Bulgarian Lev</option>
+<option value="USD">$ USD US Dollar</option>
+<option value="EUR">&euro; EUR Euro</option>
+<option value="CHF">&nbsp; CHF Swiss Franc</option>
+<option value="GBP">&pound; GBP British Pound</option>
 </select>
 </td>
 </tr>
@@ -65,7 +70,10 @@ Choose currency and period of the deposit in months.</td>
 <td class="td-right">Deposit Type</td>
 <td>&nbsp;</td>
 <td>
-<select name="Type">
+<select name="Type" onchange="javascript: changeInterest(
+document.forms.CalcForm.Type.value,
+document.forms.CalcForm.Currency.value,
+document.forms.CalcForm.Interest);">
 <option selected="selected" value="1">1 month</option>
 <option value="3">3 months</option>
 <option value="6">6 months</option>
@@ -113,6 +121,9 @@ onclick="javascript: if (checkForm()) doCalc();">
 </tbody>
 </table>
 </form>
+<p><i>Note</i>: Predefined interests, used in the calculator are taken
+from the bulletin of <a href="http://www.fibank.bg">First Investment Bank</a>
+and are valid from March 1st 2005.</p>
 </div>
 
 <!-- F O O T E R -->

@@ -13,7 +13,7 @@
 <meta name="robots" content="NOARCHIVE" />
 <meta name="author" content="Георги Д. Сотиров" />
 <meta name="version" content="0.1.0" />
-<meta name="CVS" content="$Id: index.bg.html,v 1.3 2005/04/20 18:36:42 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.bg.html,v 1.4 2005/05/24 09:20:47 gsotirov Exp $" />
 <title>Лихвен калкулатор</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
@@ -39,7 +39,7 @@
 <a href="index.en.html" hreflang="en" lang="en">English</a>
 </p>
 
-<form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post"
+<form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post" name="CalcForm"
 onsubmit="javascript: return false" onreset="javascript: doReset();">
 <table id="CalcTable">
 <tbody>
@@ -54,10 +54,15 @@ onsubmit="javascript: return false" onreset="javascript: doReset();">
 <td>&nbsp;</td>
 <td>
 <input name="Amount" type="text" size="16" maxlength="16" />&nbsp;
-<select name="Currency" onchange="javascript: showCC();">
-<option selected="selected" value="BGN">Български лев, BGN</option>
-<option value="USD">Щатски долар, USD, $</option>
-<option value="EUR">Евро, EUR, &euro;</option>
+<select name="Currency" onchange="javascript: changeInterest(
+document.forms.CalcForm.Type.value,
+document.forms.CalcForm.Currency.value,
+document.forms.CalcForm.Interest);">
+<option selected="selected" value="BGN">&nbsp; BGN Български лев</option>
+<option value="USD">$ USD Щатски долар</option>
+<option value="EUR">&euro; EUR Евро</option>
+<option value="CHF">&nbsp; CHF Швейцарски франк</option>
+<option value="GBP">&pound; GBP Британкси паунд</option>
 </select>
 </td>
 </tr>
@@ -65,7 +70,10 @@ onsubmit="javascript: return false" onreset="javascript: doReset();">
 <td class="td-right">Тип на депозита</td>
 <td>&nbsp;</td>
 <td>
-<select name="Type">
+<select name="Type" onchange="javascript: changeInterest(
+document.forms.CalcForm.Type.value,
+document.forms.CalcForm.Currency.value,
+document.forms.CalcForm.Interest);">
 <option selected="selected" value="1">1 месец</option>
 <option value="3">3 месеца</option>
 <option value="6">6 месеца</option>
@@ -113,6 +121,9 @@ onclick="javascript: if (checkForm()) doCalc();">
 </tbody>
 </table>
 </form>
+<p><i>Забележка</i>: Предварително определените лихви, използвани в
+калкулатора, са тези обявени от <a href="http://www.fibank.bg">Първа
+Инвестиционна Банка</a> и са валидни от 1 Март 2005 г.</p>
 </div>
 
 <!-- F O O T E R -->

@@ -2,8 +2,19 @@
  * ---
  * Written by George D. Sotirov (gdsotirov@dir.bg)
  * Version: 0.1.1
- * $Id: icalc.js,v 1.3 2005/05/23 20:53:34 gsotirov Exp $
+ * $Id: icalc.js,v 1.4 2005/05/24 09:20:20 gsotirov Exp $
  */
+
+/* This are the interests for the main currencyes as defined by
+ * First Investment Bank as of 2005-03-01
+ * The arrays should contain the interests for 1, 3, 6, 12, 18, 24 and
+ * 36 months deposits in that order.
+ */
+var BGNInterests = new Array(3.50, 4.00, 4.50, 6.00, 7.00, 7.50, 9.00);
+var USDInterests = new Array(2.75, 3.25, 4.00, 4.50, 5.00, 5.50, 7.00);
+var EURInterests = new Array(2.50, 3.00, 3.50, 4.50, 5.00, 5.50, 7.00);
+var CHFInterests = new Array(0.30, 0.40, 0.50, 0.60, 0.00, 0.00, 0.00);
+var GBPInterests = new Array(3.50, 3.75, 4.00, 4.50, 5.00, 5.50, 7.00);
 
 var uisPlsFillAmount = 0;
 var uisPlsCorrAmount = 1;
@@ -27,7 +38,7 @@ var UIStringsBG = new Array(
 /*  6 */ "Периода на депозита трябва да е кратен на броя месеци от типа на депозита!",
 /*  7 */ "Месец",
 /*  8 */ "Натрупване",
-/*  9 */ "Печалба"
+/*  9 */ "Печалба",
 /* 10 */ "Печалба натрупване"
 );
 
@@ -79,6 +90,29 @@ function checkField(fld, type, uisFill, uisCorr) {
   }
 
   return true;
+}
+
+function changeInterest(months, cur, element) {
+  var index = 0;
+
+  switch ( parseInt(months) ) {
+    case  1: index = 0; break;
+    case  3: index = 1; break;
+    case  6: index = 2; break;
+    case 12: index = 3; break;
+    case 18: index = 4; break;
+    case 24: index = 5; break;
+    case 36: index = 6; break;
+  }
+  switch ( cur ) {
+    case "BGN": interest = BGNInterests[index]; break;
+    case "USD": interest = USDInterests[index]; break;
+    case "EUR": interest = EURInterests[index]; break;
+    case "CHF": interest = CHFInterests[index]; break;
+    case "GBP": interest = GBPInterests[index]; break;
+    default   : interest = 0.0; break;
+  }
+  element.value = interest;
 }
 
 function doReset() {
