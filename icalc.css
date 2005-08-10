@@ -2,14 +2,14 @@
  * Written by George D. Sotirov, gdsotirov@dir.bg
  *
  * Media: screen, print
- * $Id: icalc.css,v 1.3 2005/08/10 11:08:15 gsotirov Exp $
+ * $Id: icalc.css,v 1.4 2005/08/10 11:16:18 gsotirov Exp $
  */
 
 @media screen, print {
-  a {
+  a[href] {
     text-decoration: underline;
   }
-  
+
   a.link {
     color: #0000FF;
   }
@@ -29,7 +29,7 @@
   div.row {
     clear: both;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     color: #000000;
     font-family: Ariel, Helvetica, sans-serif;
@@ -51,7 +51,7 @@
   input {
     text-align: right;
   }
-  
+
   img {
     border: 0 none;
   }
@@ -63,7 +63,7 @@
     text-align: right;
     width: 50%;
   }
-  
+
   table {
     border-style: none;
     empty-cells: show;
@@ -105,7 +105,7 @@
   .align-right {
     text-align: right;
   }
-  
+
   .align-justify, .text {
     text-align: justify;
   }
@@ -126,7 +126,7 @@
     color: #FF0000;
     font-weight: bold;
   }
-  
+
   .text {
     text-indent: 2em;
   }
