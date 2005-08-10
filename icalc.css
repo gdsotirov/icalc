@@ -2,7 +2,7 @@
  * Written by George D. Sotirov, gdsotirov@dir.bg
  *
  * Media: screen, print
- * $Id: icalc.css,v 1.4 2005/08/10 11:16:18 gsotirov Exp $
+ * $Id: icalc.css,v 1.5 2005/08/10 19:47:04 gsotirov Exp $
  */
 
 @media screen, print {
@@ -10,19 +10,15 @@
     text-decoration: underline;
   }
 
-  a.link {
-    color: #0000FF;
-  }
-
   body {
     font: normal normal normal medium Arial, Helvetica, sans-serif;
-    background-color: #FFFFFF;
+    background-color: #fff;
   }
 
   button {
-    background-color: #999999;
-    border: 1px solid #000000;
-    color: #FFFFFF;
+    background-color: #999;
+    border: 1px solid #000;
+    color: #fff;
     font-weight: bold;
   }
 
@@ -30,40 +26,41 @@
     clear: both;
   }
 
+  div.row span.label, div.row span.input {
+    float: left;
+    margin: 0.2em;
+    padding: 0.1em;
+  }
+  
+  div.row span.label {
+    clear: left;
+    text-align: right;
+    width: 50%;
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    color: #000000;
+    color: #000;
     font-family: Ariel, Helvetica, sans-serif;
     font-style: normal;
     font-variant: normal;
     font-weight: bold;
     text-align: center;
   }
-
-  input, select {
-    background-color: #FFFFFF;
-    border: 1px solid #000000;
-    color: #000000;
-    clear: right;
-    float: left;
-    margin: 0.2em;
-  }
-
+  
   input {
     text-align: right;
   }
 
+  input, select {
+    background-color: #fff;
+    border: 1px solid #000;
+    color: #000;
+  }
+    
   img {
     border: 0 none;
   }
-
-  label {
-    clear: left;
-    float: left;
-    margin: 0.2em;
-    text-align: right;
-    width: 50%;
-  }
-
+ 
   table {
     border-style: none;
     empty-cells: show;
@@ -72,16 +69,16 @@
   }
 
   table.tbThinBorder {
-    border-top: 1px solid #000000;
+    border-top: 1px solid #000;
     border-right-style: none;
     border-bottom-style: none;
-    border-left: 1px solid #000000;
+    border-left: 1px solid #000;
   }
 
   table.tbThinBorder th, table.tbThinBorder td {
     border-top-style: none;
-    border-right: 1px solid #000000;
-    border-bottom: 1px solid #000000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
     border-left-style: none;
   }
 
@@ -90,7 +87,7 @@
   }
 
   table#OutputTable th {
-    background-color: #CCCCCC;
+    background-color: #ccc;
   }
 
   /* Pseudo classes */
@@ -105,7 +102,7 @@
   .align-right {
     text-align: right;
   }
-
+  
   .align-justify, .text {
     text-align: justify;
   }
@@ -115,28 +112,43 @@
   }
 
   .copyright {
-    color: #CCCCCC;
+    color: #ccc;
     font: normal normal normal small Arial, Helvetica, sans-serif;
     text-decoration: none;
     text-align: center;
   }
 
   .red-bold-text-on-light-gray {
-    background-color: #DDDDDD;
-    color: #FF0000;
+    background-color: #ddd;
+    color: #f00;
     font-weight: bold;
   }
-
+  
   .text {
     text-indent: 2em;
   }
 }
 
 @media screen {
+  input, select {
+    background-color: #eee;
+  }
+  
+  input:hover, input:focus, select:hover, select:focus {
+    background-color: #fff;
+  }
+  
+  .no_screen {
+    display: none;
+  }
 }
 
 @media print {
   input, select {
     border: 0 none;
+  }
+  
+  .no_print {
+    display: none;
   }
 }
