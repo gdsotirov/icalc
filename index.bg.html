@@ -11,7 +11,7 @@
 <meta name="robots" content="NOARCHIVE" />
 <meta name="author" content="Георги Д. Сотиров" />
 <meta name="version" content="0.1.1" />
-<meta name="CVS" content="$Id: index.bg.html,v 1.6 2005/08/10 11:15:30 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.bg.html,v 1.7 2005/08/10 19:48:08 gsotirov Exp $" />
 <title>Лихвен калкулатор</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Подразбиращ се" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
@@ -47,12 +47,13 @@ hreflang="en" lang="en">English</a></p>
 
 <div id="Calculator">
 <h2>Калкулатор</h2>
-<p>Моля, въведете размера на сумата за която желаете да направите изчисление,
-типа на депозита и годишния номинален лихвен процент. Изберете валута и срок
-на депозита в месеци.</p>
+<p class="no_print">Моля, въведете размера на сумата за която желаете да
+направите изчисление, типа на депозита и годишния номинален лихвен процент.
+Изберете валута и срок на депозита в месеци.</p>
 <form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post" onsubmit="javascript: return false;" onreset="javascript: doReset();">
 <div class="row">
 <label for="Amount"><span class="label">Сума</span></label>
+<span class="input">
 <input id="Amount" name="Amount" size="16" maxlength="16" type="text" />
 <select name="Currency" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
 <option selected="selected" value="BGN">&nbsp; BGN Български лев</option>
@@ -60,11 +61,12 @@ hreflang="en" lang="en">English</a></p>
 <option value="EUR">€ EUR Евро</option>
 <option value="CHF">&nbsp; CHF Швейцарски франк</option>
 <option value="GBP">£ GBP Британкси паунд</option>
-</select>
+</select></span>
 </div>
 
 <div class="row">
-<label for="Type">Тип на депозита</label>
+<label for="Type"><span class="label">Тип на депозита</span>
+<span class="input">
 <select id="Type" name="Type" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
 <option selected="selected" value="1">1 месец</option>
 <option value="3">3 месеца</option>
@@ -73,26 +75,32 @@ hreflang="en" lang="en">English</a></p>
 <option value="18">18 месеца</option>
 <option value="24">24 месеца</option>
 <option value="36">36 месеца</option>
-</select>
+</select></span></label>
 </div>
 
 <div class="row">
-<label for="Interest">Годишен номинален лихвен процент</label>
-<input id="Interest" name="Interest" size="6" maxlength="10" type="text" />&nbsp;%
+<label for="Interest"><span class="label">Годишен номинален лихвен процент</span>
+<span class="input">
+<input id="Interest" name="Interest" size="6" maxlength="10" type="text" />&nbsp;%</span>
+</label>
 </div>
 
 <div class="row">
-<label for="Period">Срок на депозита</label>
-<input id="Period" name="Period" size="6" maxlength="10" type="text" />&nbsp;месец(и)
+<label for="Period"><span class="label">Срок на депозита</span>
+<span class="input">
+<input id="Period" name="Period" size="6" maxlength="10" type="text" />&nbsp;месец(и)</span></label>
 </div>
 
 <div class="row">
+<span class="label">
 <button name="Calculate" type="submit" onclick="javascript: if (checkForm()) calcAndDisplay();">
-<img src="calc.png" alt="" height="16" width="16" />&nbsp;Изчисли
-</button>&nbsp;
+<img src="icalc.bg_files/calc.png" alt="" height="16" width="16" />&nbsp;Изчисли</button></span>
+<span class="input">
 <button name="Clear" type="reset">
-<img src="clear.png" alt="" height="16" width="16" />&nbsp;Изчисти
-</button>
+<img src="icalc.bg_files/clear.png" alt="" height="16" width="16" />&nbsp;Изчисти</button></span>
+</p></div>
+<div class="row">
+<br />
 </div>
 </form></div>
 
