@@ -2,14 +2,14 @@
  * Written by George D. Sotirov, gdsotirov@dir.bg
  *
  * Media: screen, print
- * $Id: icalc.css,v 1.2 2005/04/20 18:21:19 gsotirov Exp $
+ * $Id: icalc.css,v 1.3 2005/08/10 11:08:15 gsotirov Exp $
  */
 
 @media screen, print {
   a {
-    color: inherit;
+    text-decoration: underline;
   }
-
+  
   a.link {
     color: #0000FF;
   }
@@ -26,6 +26,10 @@
     font-weight: bold;
   }
 
+  div.row {
+    clear: both;
+  }
+  
   h1, h2, h3, h4, h5, h6 {
     color: #000000;
     font-family: Ariel, Helvetica, sans-serif;
@@ -39,16 +43,27 @@
     background-color: #FFFFFF;
     border: 1px solid #000000;
     color: #000000;
+    clear: right;
+    float: left;
+    margin: 0.2em;
   }
 
   input {
     text-align: right;
   }
-
+  
   img {
     border: 0 none;
   }
 
+  label {
+    clear: left;
+    float: left;
+    margin: 0.2em;
+    text-align: right;
+    width: 50%;
+  }
+  
   table {
     border-style: none;
     empty-cells: show;
@@ -79,6 +94,26 @@
   }
 
   /* Pseudo classes */
+  .align-center {
+    text-align: center;
+  }
+
+  .align-left {
+    text-align: left;
+  }
+
+  .align-right {
+    text-align: right;
+  }
+  
+  .align-justify, .text {
+    text-align: justify;
+  }
+
+  .bold-text {
+    font-weight: bold;
+  }
+
   .copyright {
     color: #CCCCCC;
     font: normal normal normal small Arial, Helvetica, sans-serif;
@@ -86,27 +121,14 @@
     text-align: center;
   }
 
-  .td-center, .align-center {
-    text-align: center;
-  }
-
-  .td-left {
-    text-align: left;
-  }
-
-  .td-right {
-    width: 50%;
-    text-align: right;
-  }
-
-  .bold-text {
-    font-weight: bold;
-  }
-
   .red-bold-text-on-light-gray {
     background-color: #DDDDDD;
     color: #FF0000;
     font-weight: bold;
+  }
+  
+  .text {
+    text-indent: 2em;
   }
 }
 
