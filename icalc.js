@@ -2,7 +2,7 @@
  * ---
  * Written by George D. Sotirov (gdsotirov@dir.bg)
  * Version: 0.1.1
- * $Id: icalc.js,v 1.4 2005/05/24 09:20:20 gsotirov Exp $
+ * $Id: icalc.js,v 1.5 2005/08/10 11:05:10 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
@@ -37,7 +37,7 @@ var UIStringsBG = new Array(
 /*  5 */ "Моля, задайте правилна стойност в полето Срок на депозита!\nНапример: 1, 3, 6, 12",
 /*  6 */ "Периода на депозита трябва да е кратен на броя месеци от типа на депозита!",
 /*  7 */ "Месец",
-/*  8 */ "Натрупване",
+/*  8 */ "Салдо",
 /*  9 */ "Печалба",
 /* 10 */ "Печалба натрупване"
 );
@@ -51,7 +51,7 @@ var UIStringsEN = new Array(
 /*  5 */ "Please, fill in correct value in the Period of the deposit field!\nExample: 1, 3, 6, 12",
 /*  6 */ "The period of the deposit must be multiple to the month count in the type of the deposit!",
 /*  7 */ "Month",
-/*  8 */ "Accumulated",
+/*  8 */ "Balance",
 /*  9 */ "Profit",
 /* 10 */ "Profit accumulation"
 );
@@ -66,8 +66,7 @@ function loadUIString(id) {
   else if ( lang == "bg" ) {
     return UIStringsBG[id];
   }
-  else
-    return "???";
+  else return "???";
 }
 
 function checkField(fld, type, uisFill, uisCorr) {
@@ -90,6 +89,12 @@ function checkField(fld, type, uisFill, uisCorr) {
   }
 
   return true;
+}
+
+function initForm() {
+    var Form = document.forms.CalcForm;
+    Form.Amount.focus();
+    changeInterest(Form.Type.value, Form.Currency.value, Form.Interest);
 }
 
 function changeInterest(months, cur, element) {
@@ -116,8 +121,9 @@ function changeInterest(months, cur, element) {
 }
 
 function doReset() {
-  var OutputTable = document.getElementById("OutputTable");
-  OutputTable.innerHTML = "";
+  var Output = document.getElementById("Output");
+  removeAllChilds(Output);
+  initForm();
 }
 
 function checkForm() {
@@ -151,15 +157,19 @@ function checkForm() {
   return true;
 }
 
-function doCalc() {
+function calcAndDisplay() {
   var form = document.forms.CalcForm;
   var amount = parseFloat(form.Amount.value);
   var type = parseInt(form.Type.value);
   var interest = parseFloat(form.Interest.value);
   var period = parseInt(form.Period.value);
 
-  var OutputTable = document.getElementById("OutputTable");
-  OutputTable.innerHTML = "";
+  var Output = document.getElementById("Output");
+  var OutputTable = document.createElement("table");
+  Output.appendChild(OutputTable);
+  OutputTable.setAttribute("class", "tbThinBorder");
+  OutputTable.setAttribute("id", "OutputTable");
+  OutputTable.setAttribute("cellspacing", "0");
   makeTableHeader(OutputTable);
   var Rows = calc_interest(amount, type, interest, period);
 
@@ -171,6 +181,14 @@ function doCalc() {
   return true;
 }
 
+function removeAllChilds(Node) {
+    var childs = Node.childNodes;
+    var child_count = childs.length;
+    for (var i = 1; i <= child_count; ++i) {
+      Node.removeChild(childs[0]);
+    }
+}
+
 function makeTableHeader(otable) {
   var cur = document.forms.CalcForm.Currency.value;
   var new_tr = document.createElement("tr");
@@ -180,11 +198,11 @@ function makeTableHeader(otable) {
   var new_th4 = document.createElement("th");
 
   new_th1.setAttribute("width", "15%");
-  new_th1.innerHTML = loadUIString(uisMonth);
+  new_th1.appendChild(document.createTextNode(loadUIString(uisMonth)));
   new_th2.setAttribute("widht", "55%");
-  new_th2.innerHTML = sprintf("%s, %s", loadUIString(uisAccumulated), cur);
-  new_th3.innerHTML = sprintf("%s, %s", loadUIString(uisProfit), cur);
-  new_th4.innerHTML = sprintf("%s, %s", loadUIString(uisProfitAcc), cur);
+  new_th2.appendChild(document.createTextNode(sprintf("%s, %s", loadUIString(uisAccumulated), cur)));
+  new_th3.appendChild(document.createTextNode(sprintf("%s, %s", loadUIString(uisProfit), cur)));
+  new_th4.appendChild(document.createTextNode(sprintf("%s, %s", loadUIString(uisProfitAcc), cur)));
   new_tr.appendChild(new_th1);
   new_tr.appendChild(new_th2);
   new_tr.appendChild(new_th3);
@@ -193,17 +211,16 @@ function makeTableHeader(otable) {
 }
 
 function makeTableRow(otable, month, gain, interest, profitacc) {
-  var new_row = otable.create
   var new_tr = document.createElement("tr");
   var new_td1 = document.createElement("td");
   var new_td2 = document.createElement("td");
   var new_td3 = document.createElement("td");
   var new_td4 = document.createElement("td");
 
-  new_td1.innerHTML = sprintf("%d", month);
-  new_td2.innerHTML = sprintf("%3.2f", gain);
-  new_td3.innerHTML = sprintf("%3.2f", interest);
-  new_td4.innerHTML = sprintf("%3.2f", profitacc);
+  new_td1.appendChild(document.createTextNode(sprintf("%d", month)));
+  new_td2.appendChild(document.createTextNode(sprintf("%3.2f", gain)));
+  new_td3.appendChild(document.createTextNode(sprintf("%3.2f", interest)));
+  new_td4.appendChild(document.createTextNode(sprintf("%3.2f", profitacc)));
   new_tr.appendChild(new_td1);
   new_tr.appendChild(new_td2);
   new_tr.appendChild(new_td3);
