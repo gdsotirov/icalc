@@ -1,79 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="bg" lang="bg">
-
 <head>
 <meta http-equiv="Content-Type" content="test/html; charset=UTF-8" />
 <meta name="keywords" content="лихвен калкулатор, лихва" />
-<meta name="description" content="Лихвен калкулатор" />
+<meta name="description" content="Изчисляване на лихва по депозити" />
 <meta name="robots" content="INDEX, FOLLOW" />
 <meta name="robots" content="NOARCHIVE" />
 <meta name="author" content="Георги Д. Сотиров" />
-<meta name="version" content="0.1.0" />
-<meta name="CVS" content="$Id: index.bg.html,v 1.4 2005/05/24 09:20:47 gsotirov Exp $" />
+<meta name="version" content="0.1.1" />
+<meta name="CVS" content="$Id: index.bg.html,v 1.5 2005/08/10 11:07:23 gsotirov Exp $" />
 <title>Лихвен калкулатор</title>
-<link rel="stylesheet" href="icalc.css" media="screen, print" type="text/css" />
+<link rel="stylesheet" href="icalc.css" media="screen, print" title="Подразбиращ се" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
 <link rel="icon" href="icalc.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="icalc.ico" type="image/x-icon" />
-<link rel="author" href="mailto:gdsotirov@dir.bg" />
+<link rel="author" href="mailto:Георги Сотиров &lt;gdsotirov@dir.bg&gt;" />
 <link rel="copyright" href="#Copyright" />
-<link rel="alternate" type="text/html" href="index.en.html" hreflang="en" lang="en" title="Interest calculator" />
+<link rel="alternate" type="text/html" href="index.en.html" hreflang="en" title="Interest calculator" lang="en" />
 <script type="text/javascript" src="sprintf.js" defer="defer"></script>
-<script type="text/javascript" src="icc.js" defer="defer"></script>
-<script type="text/javascript" src="icalc.js" defer="defer"></script>
-</head>
+<script type="text/javascript" src="js/icc.js" defer="defer"></script>
+<script type="text/javascript" src="js/icalc.js" defer="defer"></script></head>
 
-<body onload="javascript: document.forms.CalcForm.Amount.focus();">
-<!-- Header //-->
-<div id="Head">
+<body onload="javascript: initForm();">
+<div id="Header">
 <h1>Лихвен калкулатор</h1>
+<p class="align-center">
+<a href="index.en.html"
+hreflang="en" lang="en">English</a></p>
 </div>
 
-<!-- Calculator //-->
-<div id="Calc">
-<p align="right">
-<a href="index.en.html" hreflang="en" lang="en">English</a>
-</p>
+<div id="TermsOfUse">
+<h2>Условия за ползване</h2>
+<p class="text">Това приложение и информацията, която предоставя, се предлагат
+такива каквито са. НОСИТЕЛЯТ НА АВТОРСКИТЕ ПРАВА ОТКАЗВА ДА НОСИ КАКВАТО И ДА
+Е ОТГОВОРНОСТ, ВКЛЮЧИТЕЛНО (НО НЕ САМО) ОТГОВОРНОСТТА, ЧЕ ИЗПОЛЗВАНЕТО НА
+ИНФОРМАЦИЯТА ОТ ТОВА ПРИЛОЖЕНИЕ НЯМА ДА ДОВЕДЕ ДО НАКЪРНЯВАНЕ НА НЕЧИИ ПРАВА
+ИЛИ ПРЕДПОЛАГАНАТА ГАРАНЦИЯ, ЗА ЦЕННОСТ ИЛИ ПРИГОДНОСТ ЗА ОПРЕДЕЛЕНА ЦЕЛ.</p>
+<p class="text">Ползването на това приложение е на ваша отговорност!</p>
+<p class="text">Авторът декларира, че приложението <strong>не изпраща никакви
+данни</strong> към сървъра, който го стопанисва, защото изчислението става
+изцяло във вашия клиент.</p>
+</div>
 
-<form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post" name="CalcForm"
-onsubmit="javascript: return false" onreset="javascript: doReset();">
-<table id="CalcTable">
-<tbody>
-<tr>
-<td align="center" colspan="3">Моля, въведете размера на сумата за която
-желаете да направите изчисление, типа на депозита и годишния номинален лихвен
-процент. Изберете валута и срок на депозита в месеци.</td>
-</tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr>
-<td class="td-right">Сума</td>
-<td>&nbsp;</td>
-<td>
-<input name="Amount" type="text" size="16" maxlength="16" />&nbsp;
-<select name="Currency" onchange="javascript: changeInterest(
-document.forms.CalcForm.Type.value,
-document.forms.CalcForm.Currency.value,
-document.forms.CalcForm.Interest);">
+<div id="Calculator">
+<h2>Калкулатор</h2>
+<p>Моля, въведете размера на сумата за която желаете да направите изчисление,
+типа на депозита и годишния номинален лихвен процент. Изберете валута и срок
+на депозита в месеци.</p>
+<form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post" onsubmit="javascript: return false;" onreset="javascript: doReset();">
+<div class="row">
+<label for="Amount"><span class="label">Сума</span></label>
+<input id="Amount" name="Amount" size="16" maxlength="16" type="text" />
+<select name="Currency" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
 <option selected="selected" value="BGN">&nbsp; BGN Български лев</option>
 <option value="USD">$ USD Щатски долар</option>
-<option value="EUR">&euro; EUR Евро</option>
+<option value="EUR">€ EUR Евро</option>
 <option value="CHF">&nbsp; CHF Швейцарски франк</option>
-<option value="GBP">&pound; GBP Британкси паунд</option>
+<option value="GBP">£ GBP Британкси паунд</option>
 </select>
-</td>
-</tr>
-<tr>
-<td class="td-right">Тип на депозита</td>
-<td>&nbsp;</td>
-<td>
-<select name="Type" onchange="javascript: changeInterest(
-document.forms.CalcForm.Type.value,
-document.forms.CalcForm.Currency.value,
-document.forms.CalcForm.Interest);">
+</div>
+
+<div class="row">
+<label for="Type">Тип на депозита</label>
+<select id="Type" name="Type" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
 <option selected="selected" value="1">1 месец</option>
 <option value="3">3 месеца</option>
 <option value="6">6 месеца</option>
@@ -82,74 +74,59 @@ document.forms.CalcForm.Interest);">
 <option value="24">24 месеца</option>
 <option value="36">36 месеца</option>
 </select>
-</td>
-</tr>
-<tr>
-<td class="td-right">Годишен номинален лихвен процент</td>
-<td>&nbsp;</td>
-<td><input name="Interest" type="text" size="6" maxlength="10" />&nbsp;%</td>
-</tr>
-<tr>
-<td class="td-right">Срок на депозита</td>
-<td>&nbsp;</td>
-<td>
-<input name="Period" type="text" size="6" maxlength="10" />&nbsp;месец(и)
-</td>
-</tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr>
-<td colspan="3" class="td-center">
-<button name="Calculate" type="submit"
-onclick="javascript: if (checkForm()) doCalc();">
-<img src="calc.png" width="16" height="16" alt="" />&nbsp;Изчисли
+</div>
+
+<div class="row">
+<label for="Interest">Годишен номинален лихвен процент</label>
+<input id="Interest" name="Interest" size="6" maxlength="10" type="text" />&nbsp;%
+</div>
+
+<div class="row">
+<label for="Period">Срок на депозита</label>
+<input id="Period" name="Period" size="6" maxlength="10" type="text" />&nbsp;месец(и)
+</div>
+
+<div class="row">
+<button name="Calculate" type="submit" onclick="javascript: if (checkForm()) calcAndDisplay();">
+<img src="icalc.bg_files/calc.png" alt="" height="16" width="16" />&nbsp;Изчисли
 </button>&nbsp;
 <button name="Clear" type="reset">
-<img src="clear.png" width="16" height="16" alt="" />&nbsp;Изчисти
+<img src="icalc.bg_files/clear.png" alt="" height="16" width="16" />&nbsp;Изчисти
 </button>
-</td>
-</tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr>
-<td colspan="3">
-<table class="tbThinBorder" cellspacing="0" id="OutputTable">
-</table>
-</td>
-</tr>
-<tr>
-<td colspan="3">&nbsp;</td>
-</tr>
-</tbody>
-</table>
-</form>
-<p><i>Забележка</i>: Предварително определените лихви, използвани в
-калкулатора, са тези обявени от <a href="http://www.fibank.bg">Първа
-Инвестиционна Банка</a> и са валидни от 1 Март 2005 г.</p>
+</div>
+</form></div>
+
+<div id="Output">
 </div>
 
 <!-- F O O T E R -->
 <div id="Footer">
+<p><i>Забележка</i>: Предварително определените лихви, използвани в
+калкулатора, са тези обявени от <a href="http://www.fibank.bg/">Първа
+Инвестиционна Банка</a> и са валидни от 1 Март 2005 г.</p>
 <hr />
 <p class="align-center">
 <!-- Valid XHTML 1.0 -->
 <a href="http://validator.w3.org/check?uri=referer">
-<img src="valid-xhtml.png"
-alt="[Икона Валиден XHTML 1.0]" title="Valid XHTML 1.0!" height="31" width="88" /></a>
+<img src="icalc.bg_files/valid-xhtml.png" alt="[Икона Валиден XHTML 1.0]" title="Valid XHTML 1.0!" height="31" width="88" /></a>
 <!-- Valid CSS -->
 <a href="http://jigsaw.w3.org/css-validator/">
-<img src="valid-css.png"
-alt="[Икона Валиден CSS]" title="Valid CSS!" height="31" width="88" /></a>
+<img src="icalc.bg_files/valid-css.png" alt="[Икона Валиден CSS]" title="Valid CSS!" height="31" width="88" /></a>
 <!-- UTF-8 Encoded -->
 <a href="http://www.unicode.org/">
-<img src="unicode.png" width="88" height="31"
-alt="[Кодирано в UTF-8]" title="Encoded in UTF-8!" /></a>
+<img src="icalc.bg_files/unicode.png" alt="[Кодирано в UTF-8]" title="Encoded in UTF-8!" height="31" width="88" /></a>
 </p>
 <!-- Copyright -->
-<p class="copyright"><a name="Copyright">Автор</a> &copy; 2004-2005
+<p class="copyright"><a name="Copyright">Автор</a> © 2004-2005
 <a href="mailto:gdsotirov@dir.bg">Георги Д. Сотиров</a><br />
-Дословно копие и разпространение на цялато приложение<br />
-на какъвто и да е носител е позволено без разрешение,<br />
-<b>но само ако това съобщение е запазено</b>.</p>
+Това приложение може да бъде копирано, разпространявано и публикувано в
+първоначален или изменен вид без каквито и да е ограничения при условие, че
+горната бележка за авторските права, както и настоящият абзац, бъдат включени
+във всички такива копия или производни работи. При разпространяване на
+изменена версия непременно трябва да бъде посочена препратка към
+първоначалната версия на това приложение или пък първоначалната и изменената
+версия да се разпространяват заедно.</p>
 </div>
-</body>
 
+</body>
 </html>
