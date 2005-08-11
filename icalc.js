@@ -2,7 +2,7 @@
  * ---
  * Written by George D. Sotirov (gdsotirov@dir.bg)
  * Version: 0.1.1
- * $Id: icalc.js,v 1.5 2005/08/10 11:05:10 gsotirov Exp $
+ * $Id: icalc.js,v 1.6 2005/08/11 18:11:56 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
@@ -44,11 +44,11 @@ var UIStringsBG = new Array(
 
 var UIStringsEN = new Array(
 /*  0 */ "Please, fill in the Amount field!",
-/*  1 */ "Please, fill in correct value in the Amount field!\nExample: 10000, 15500, 20100.55",
-/*  2 */ "Please, fill in the Yearly Nominal Interest field!",
-/*  3 */ "Please, fill in correct value in the Yearly Nominal Interest field!\nExample: 3.5, 4, 6.0",
+/*  1 */ "Please, fill in correct value in the Amount field!\nExamples: 10000, 15500, 20100.55",
+/*  2 */ "Please, fill in the Nominal yearly interest field!",
+/*  3 */ "Please, fill in correct value in the Yearly Nominal Interest field!\nExamples: 3.5, 4, 6.0",
 /*  4 */ "Please, fill in the Period of the deposit field!",
-/*  5 */ "Please, fill in correct value in the Period of the deposit field!\nExample: 1, 3, 6, 12",
+/*  5 */ "Please, fill in correct value in the Period of the deposit field!\nExamples: 1, 3, 6, 12",
 /*  6 */ "The period of the deposit must be multiple to the month count in the type of the deposit!",
 /*  7 */ "Month",
 /*  8 */ "Balance",
