@@ -2,7 +2,7 @@
  * Written by George D. Sotirov, gdsotirov@dir.bg
  *
  * Media: screen, print
- * $Id: icalc.css,v 1.5 2005/08/10 19:47:04 gsotirov Exp $
+ * $Id: icalc.css,v 1.6 2005/08/11 18:11:29 gsotirov Exp $
  */
 
 @media screen, print {
@@ -137,7 +137,11 @@
   input:hover, input:focus, select:hover, select:focus {
     background-color: #fff;
   }
-  
+
+  button:hover, button:focus {
+    border-style: outset;
+  }
+
   .no_screen {
     display: none;
   }
