@@ -2,7 +2,7 @@
  * ---
  * Written by George D. Sotirov (gdsotirov@dir.bg)
  * Version: 0.1.1
- * $Id: icalc.js,v 1.6 2005/08/11 18:11:56 gsotirov Exp $
+ * $Id: icalc.js,v 1.7 2005/08/12 16:17:55 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
@@ -166,6 +166,7 @@ function calcAndDisplay() {
 
   var Output = document.getElementById("Output");
   var OutputTable = document.createElement("table");
+  removeAllChilds(Output);
   Output.appendChild(OutputTable);
   OutputTable.setAttribute("class", "tbThinBorder");
   OutputTable.setAttribute("id", "OutputTable");
