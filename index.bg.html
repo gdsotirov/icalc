@@ -11,7 +11,7 @@
 <meta name="robots" content="NOARCHIVE" />
 <meta name="author" content="Георги Д. Сотиров" />
 <meta name="version" content="0.1.1" />
-<meta name="CVS" content="$Id: index.bg.html,v 1.9 2005/08/11 18:28:21 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.bg.html,v 1.10 2005/08/12 16:22:31 gsotirov Exp $" />
 <title>Лихвен калкулатор</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Подразбиращ се" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
@@ -21,8 +21,8 @@
 <link rel="copyright" href="#Copyright" />
 <link rel="alternate" type="text/html" href="index.en.html" hreflang="en" title="Interest calculator" lang="en" />
 <script type="text/javascript" src="sprintf.js" defer="defer"></script>
-<script type="text/javascript" src="js/icc.js" defer="defer"></script>
-<script type="text/javascript" src="js/icalc.js" defer="defer"></script></head>
+<script type="text/javascript" src="icc.js" defer="defer"></script>
+<script type="text/javascript" src="icalc.js" defer="defer"></script></head>
 
 <body onload="javascript: initForm();">
 <div id="Header">
@@ -50,7 +50,7 @@ hreflang="en" lang="en">English</a></p>
 <p class="no_print align-center">Моля, въведете размера на сумата за която
 желаете да направите изчисление, типа на депозита и годишния номинален лихвен
 процент. Изберете валута и срок на депозита в месеци.</p>
-<form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post" onsubmit="javascript: return false;" onreset="javascript: doReset();">
+<form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post" name="CalcForm" onsubmit="javascript: return false;" onreset="javascript: doReset();">
 <div class="row">
 <label for="Amount"><span class="label">Сума</span></label>
 <span class="input">

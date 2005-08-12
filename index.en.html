@@ -11,7 +11,7 @@
 <meta name="robots" content="NOARCHIVE" />
 <meta name="author" content="Georgi D. Sotirov" />
 <meta name="version" content="0.1.1" />
-<meta name="CVS" content="$Id: index.en.html,v 1.6 2005/08/11 18:28:21 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.en.html,v 1.7 2005/08/12 16:22:31 gsotirov Exp $" />
 <title>Interest calculator</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Default" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
@@ -19,10 +19,10 @@
 <link rel="shortcut icon" href="icalc.ico" type="image/x-icon" />
 <link rel="author" href="mailto:Georgi Sotirov &lt;gdsotirov@dir.bg&gt;" />
 <link rel="copyright" href="#Copyright" />
-<link rel="alternate" type="text/html" href="index.bg.html" hreflang="bg" title="Interest calculator" lang="bg" />
+<link rel="alternate" type="text/html" href="index.bg.html" hreflang="bg" title="Лихвен калкулатор" lang="bg" />
 <script type="text/javascript" src="sprintf.js" defer="defer"></script>
-<script type="text/javascript" src="js/icc.js" defer="defer"></script>
-<script type="text/javascript" src="js/icalc.js" defer="defer"></script></head>
+<script type="text/javascript" src="icc.js" defer="defer"></script>
+<script type="text/javascript" src="icalc.js" defer="defer"></script></head>
 
 <body onload="javascript: initForm();">
 <div id="Header">
@@ -50,7 +50,7 @@ done entirely in your user agent.</p>
 <p class="no_print align-center">Please, enter the amount you want to make
 calculation on, the type of the deposit and the yearly nominal interest.
 Choose currency and period of the deposit in months.</p>
-<form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post" onsubmit="javascript: return false;" onreset="javascript: doReset();">
+<form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post" name="CalcForm" onsubmit="javascript: return false;" onreset="javascript: doReset();">
 <div class="row">
 <label for="Amount"><span class="label">Amount</span></label>
 <span class="input">
