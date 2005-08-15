@@ -2,7 +2,7 @@
  * ---
  * Written by George D. Sotirov (gdsotirov@dir.bg)
  * Version: 0.1.1
- * $Id: icalc.js,v 1.8 2005/08/15 19:28:36 gsotirov Exp $
+ * $Id: icalc.js,v 1.9 2005/08/15 20:27:36 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
@@ -184,8 +184,9 @@ function calcAndDisplay() {
 }
 
 function removeAllChilds(node) {
-  while ( node.firstChild )
-    node.removeChild(node.firstChild);
+  if ( node )
+    while ( node.firstChild )
+      node.removeChild(node.firstChild);
 }
 
 function makeTableHeader(otable) {
