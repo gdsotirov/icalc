@@ -2,7 +2,7 @@
  * Written by George D. Sotirov, gdsotirov@dir.bg
  *
  * Media: screen, print
- * $Id: icalc.css,v 1.6 2005/08/11 18:11:29 gsotirov Exp $
+ * $Id: icalc.css,v 1.7 2005/08/15 19:24:12 gsotirov Exp $
  */
 
 @media screen, print {
@@ -31,7 +31,7 @@
     margin: 0.2em;
     padding: 0.1em;
   }
-  
+
   div.row span.label {
     clear: left;
     text-align: right;
@@ -46,7 +46,7 @@
     font-weight: bold;
     text-align: center;
   }
-  
+
   input {
     text-align: right;
   }
@@ -56,11 +56,11 @@
     border: 1px solid #000;
     color: #000;
   }
-    
+
   img {
     border: 0 none;
   }
- 
+
   table {
     border-style: none;
     empty-cells: show;
@@ -80,6 +80,7 @@
     border-right: 1px solid #000;
     border-bottom: 1px solid #000;
     border-left-style: none;
+    padding: 0.1em;
   }
 
   table#OutputTable td {
@@ -102,7 +103,7 @@
   .align-right {
     text-align: right;
   }
-  
+
   .align-justify, .text {
     text-align: justify;
   }
@@ -123,7 +124,7 @@
     color: #f00;
     font-weight: bold;
   }
-  
+
   .text {
     text-indent: 2em;
   }
@@ -133,7 +134,7 @@
   input, select {
     background-color: #eee;
   }
-  
+
   input:hover, input:focus, select:hover, select:focus {
     background-color: #fff;
   }
@@ -151,7 +152,7 @@
   input, select {
     border: 0 none;
   }
-  
+
   .no_print {
     display: none;
   }
