@@ -2,7 +2,7 @@
  * ---
  * Written by George D. Sotirov (gdsotirov@dir.bg)
  * Version: 0.1.1
- * $Id: icalc.js,v 1.9 2005/08/15 20:27:36 gsotirov Exp $
+ * $Id: icalc.js,v 1.10 2005/12/10 20:08:06 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
@@ -170,12 +170,16 @@ function calcAndDisplay() {
   OutputTable.setAttribute("class", "tbThinBorder");
   OutputTable.setAttribute("id", "OutputTable");
   OutputTable.setAttribute("cellspacing", "0");
-  makeTableHeader(OutputTable);
+  var cur = document.forms.CalcForm.Currency.value;
+  makeTableHeader(OutputTable, loadUIString(uisMonth),
+                               sprintf("%s, %s", loadUIString(uisAccumulated), cur),
+                               sprintf("%s, %s", loadUIString(uisProfit), cur),
+                               sprintf("%s, %s", loadUIString(uisProfitAcc), cur));
   var Rows = calc_interest(amount, type, interest, period);
   var OutputTableBody = document.createElement("tbody");
   for ( var i = 1; i < Rows.length; ++i ) {
     var Row = Rows[i];
-    makeTableRow(OutputTableBody, Row[0], Row[1], Row[2], Row[3]);
+    makeTableRow(OutputTableBody, Row[0], sprintf("%3.2f", Row[1]), sprintf("%3.2f", Row[2]), sprintf("%3.2f", Row[3]));
   }
   OutputTable.appendChild(OutputTableBody);
   Output.appendChild(OutputTable);
@@ -190,40 +194,23 @@ function removeAllChilds(node) {
 }
 
 function makeTableHeader(otable) {
-  var new_th1 = document.createElement("th");
-  var new_th2 = document.createElement("th");
-  var new_th3 = document.createElement("th");
-  var new_th4 = document.createElement("th");
-
-  var cur = document.forms.CalcForm.Currency.value;
-  new_th1.appendChild(document.createTextNode(loadUIString(uisMonth)));
-  new_th2.appendChild(document.createTextNode(sprintf("%s, %s", loadUIString(uisAccumulated), cur)));
-  new_th3.appendChild(document.createTextNode(sprintf("%s, %s", loadUIString(uisProfit), cur)));
-  new_th4.appendChild(document.createTextNode(sprintf("%s, %s", loadUIString(uisProfitAcc), cur)));
   var new_tr = document.createElement("tr");
-  new_tr.appendChild(new_th1);
-  new_tr.appendChild(new_th2);
-  new_tr.appendChild(new_th3);
-  new_tr.appendChild(new_th4);
+  for ( var i = 1; i < arguments.length; ++i ) {
+    var new_th = document.createElement("th");
+    new_th.appendChild(document.createTextNode(arguments[i]));
+    new_tr.appendChild(new_th);
+  }
   var new_thead = document.createElement("thead");
   new_thead.appendChild(new_tr);
   otable.appendChild(new_thead);
 }
 
-function makeTableRow(otable, month, gain, interest, profitacc) {
+function makeTableRow(otable) {
   var new_tr = document.createElement("tr");
-  var new_td1 = document.createElement("td");
-  var new_td2 = document.createElement("td");
-  var new_td3 = document.createElement("td");
-  var new_td4 = document.createElement("td");
-
-  new_td1.appendChild(document.createTextNode(sprintf("%d", month)));
-  new_td2.appendChild(document.createTextNode(sprintf("%3.2f", gain)));
-  new_td3.appendChild(document.createTextNode(sprintf("%3.2f", interest)));
-  new_td4.appendChild(document.createTextNode(sprintf("%3.2f", profitacc)));
-  new_tr.appendChild(new_td1);
-  new_tr.appendChild(new_td2);
-  new_tr.appendChild(new_td3);
-  new_tr.appendChild(new_td4);
+  for ( var i = 1; i < arguments.length; ++i ) {
+    var new_td = document.createElement("td");
+    new_td.appendChild(document.createTextNode(arguments[i]));
+    new_tr.appendChild(new_td);
+  }
   otable.appendChild(new_tr);
 }
