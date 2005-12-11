@@ -2,7 +2,7 @@
  * ---
  * Written by George D. Sotirov (gdsotirov@dir.bg)
  * Version: 0.1.0
- * $Id: icc.js,v 1.4 2005/05/24 08:20:54 gsotirov Exp $
+ * $Id: icc.js,v 1.5 2005/12/11 17:46:27 gsotirov Exp $
  */
 
 /* Function   : calc_interest
@@ -19,15 +19,19 @@ function calc_interest(amount, type, interest, period) {
   var acc = amount;
   var Rows = new Array();
 
-  for ( var i = 1; i <= period/type; ++i ) {
-    if ( type <= 12 )
-      var profit = acc * interest/(12/type)/100;
+  for ( var i = 1; i <= period / type; ++i ) {
+    if ( interest != 0.0 ) {
+      if ( type <= 12 )
+        profit = acc * interest / (12 / type) / 100;
+      else
+        profit = acc * interest / 100 * period / 12;
+    }
     else
-      var profit = acc * (interest/100) * (period/12);
+      profit = 0.0;
     acc += profit;
-    var row = new Array(i * type, acc, profit, acc - amount);
-    Rows[i] = row;
+    Rows[i] = new Array(i * type, acc, profit, acc - amount);
   }
+
   return Rows;
 }
 
