@@ -1,8 +1,7 @@
 /* Interest calculator Web Interface
  * ---
  * Written by George D. Sotirov (gdsotirov@dir.bg)
- * Version: 0.1.1
- * $Id: icalc.js,v 1.10 2005/12/10 20:08:06 gsotirov Exp $
+ * $Id: icalc.js,v 1.11 2005/12/11 17:47:12 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
@@ -69,6 +68,27 @@ function loadUIString(id) {
   else return "???";
 }
 
+function formatNumber(number, float) {
+  var htmltags = document.getElementsByTagName("html");
+  var lang = htmltags[0].lang;
+
+  /* Configure number formatting */
+  var num = new NumberFormat();
+  num.setInputDecimal('.');
+  num.setSeparators(true, ' ', '.');
+  num.setPlaces('2', false);
+  num.setCurrency(false);
+  num.setCurrencyPosition(num.LEFT_OUTSIDE);
+  num.setNegativeFormat(num.LEFT_DASH);
+  num.setNegativeRed(false);
+  num.setNumber(number);
+  return num.toFormatted();
+}
+
+function formatField(obj) {
+  obj.value = formatNumber(obj.value.replace(/,/, "."));
+}
+
 function checkField(fld, type, uisFill, uisCorr) {
   if ( fld.value == "" ) {
     alert(loadUIString(uisFill));
@@ -110,17 +130,17 @@ function changeInterest(months, cur, element) {
     case 36: index = 6; break;
   }
   switch ( cur ) {
-    case "BGN": interest = BGNInterests[index]; break;
-    case "USD": interest = USDInterests[index]; break;
-    case "EUR": interest = EURInterests[index]; break;
-    case "CHF": interest = CHFInterests[index]; break;
-    case "GBP": interest = GBPInterests[index]; break;
-    default   : interest = 0.0; break;
+    case "BGN": interest = formatNumber(BGNInterests[index]); break;
+    case "USD": interest = formatNumber(USDInterests[index]); break;
+    case "EUR": interest = formatNumber(EURInterests[index]); break;
+    case "CHF": interest = formatNumber(CHFInterests[index]); break;
+    case "GBP": interest = formatNumber(GBPInterests[index]); break;
+    default   : interest = formatNumber(0.0); break;
   }
   element.value = interest;
 }
 
-function doReset() {
+function Reset() {
   var Output = document.getElementById("Output");
   removeAllChilds(Output);
   initForm();
@@ -159,9 +179,9 @@ function checkForm() {
 
 function calcAndDisplay() {
   var form = document.forms.CalcForm;
-  var amount = parseFloat(form.Amount.value);
+  var amount = parseFloat(form.Amount.value.replace(/\s+/, ""));
   var type = parseInt(form.Type.value);
-  var interest = parseFloat(form.Interest.value);
+  var interest = parseFloat(form.Interest.value.replace(/\s+/, ""));
   var period = parseInt(form.Period.value);
 
   var Output = document.getElementById("Output");
@@ -172,14 +192,14 @@ function calcAndDisplay() {
   OutputTable.setAttribute("cellspacing", "0");
   var cur = document.forms.CalcForm.Currency.value;
   makeTableHeader(OutputTable, loadUIString(uisMonth),
-                               sprintf("%s, %s", loadUIString(uisAccumulated), cur),
-                               sprintf("%s, %s", loadUIString(uisProfit), cur),
-                               sprintf("%s, %s", loadUIString(uisProfitAcc), cur));
+                               loadUIString(uisAccumulated)+ ", " + cur,
+                               loadUIString(uisProfit) + ", " + cur,
+                               loadUIString(uisProfitAcc) + ", " + cur);
   var Rows = calc_interest(amount, type, interest, period);
   var OutputTableBody = document.createElement("tbody");
   for ( var i = 1; i < Rows.length; ++i ) {
     var Row = Rows[i];
-    makeTableRow(OutputTableBody, Row[0], sprintf("%3.2f", Row[1]), sprintf("%3.2f", Row[2]), sprintf("%3.2f", Row[3]));
+    makeTableRow(OutputTableBody, Row[0], formatNumber(Row[1]), formatNumber(Row[2]), formatNumber(Row[3]));
   }
   OutputTable.appendChild(OutputTableBody);
   Output.appendChild(OutputTable);
