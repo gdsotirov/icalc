@@ -11,7 +11,7 @@
 <meta name="robots" content="NOARCHIVE" />
 <meta name="author" content="Георги Д. Сотиров" />
 <meta name="version" content="0.1.2" />
-<meta name="CVS" content="$Id: index.bg.html,v 1.15 2005/12/04 08:13:52 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.bg.html,v 1.16 2005/12/11 17:47:48 gsotirov Exp $" />
 <title>Лихвен калкулатор</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Подразбиращ се" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
@@ -20,7 +20,7 @@
 <link rel="author" href="mailto:Георги Сотиров &lt;gdsotirov@dir.bg&gt;" />
 <link rel="copyright" href="#Copyright" />
 <link rel="alternate" type="text/html" href="index.en.html" hreflang="en" title="Interest calculator" lang="en" />
-<script type="text/javascript" src="sprintf.js" defer="defer"></script>
+<script type="text/javascript" src="NumberFormat.js" defer="defer"></script>
 <script type="text/javascript" src="icc.js" defer="defer"></script>
 <script type="text/javascript" src="icalc.js" defer="defer"></script></head>
 
@@ -35,11 +35,11 @@
 <p class="no_print align-center">Моля, въведете размера на сумата за която
 желаете да направите изчисление, типа на депозита и годишния номинален лихвен
 процент. Изберете валута и срок на депозита в месеци.</p>
-<form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post" onsubmit="javascript: return false;" onreset="javascript: doReset();">
+<form action="#" enctype="application/x-www-form-urlencoded" id="CalcForm" method="post" name="CalcForm" onsubmit="javascript: return false;" onreset="javascript: Reset();">
 <div class="row">
-<label for="Amount"><span class="label">Сума</span></label>
+<label for="Amount"><span class="label">Сума:</span></label>
 <span class="input">
-<input id="Amount" name="Amount" size="16" maxlength="16" type="text" />
+<input id="Amount" name="Amount" size="16" maxlength="16" type="text" onchange="javascript: formatField(document.forms.CalcForm.Amount)" />
 <select name="Currency" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
 <option value="BGN">&nbsp; BGN Български лев</option>
 <option value="USD">$ USD Щатски долар</option>
@@ -50,7 +50,7 @@
 </div>
 
 <div class="row">
-<label for="Type"><span class="label">Тип на депозита</span>
+<label for="Type"><span class="label">Тип:</span>
 <span class="input">
 <select id="Type" name="Type" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
 <option value="1">1 месец</option>
@@ -64,14 +64,14 @@
 </div>
 
 <div class="row">
-<label for="Interest"><span class="label">Годишен номинален лихвен процент</span>
+<label for="Interest"><span class="label">Лихвен процент:</span>
 <span class="input">
-<input id="Interest" name="Interest" size="6" maxlength="10" type="text" />&nbsp;%</span>
+<input id="Interest" name="Interest" size="6" maxlength="10" type="text" title="Лихвения процент трябва да бъде годишния номинален лихвен процент" onchange="javascript: formatField(document.forms.CalcForm.Interest)" />&nbsp;%</span>
 </label>
 </div>
 
 <div class="row">
-<label for="Period"><span class="label">Срок на депозита</span>
+<label for="Period"><span class="label">Срок:</span>
 <span class="input">
 <input id="Period" name="Period" size="6" maxlength="10" type="text" />&nbsp;месец(и)</span></label>
 </div>

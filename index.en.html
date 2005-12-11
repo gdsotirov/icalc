@@ -11,7 +11,7 @@
 <meta name="robots" content="NOARCHIVE" />
 <meta name="author" content="Georgi D. Sotirov" />
 <meta name="version" content="0.1.2" />
-<meta name="CVS" content="$Id: index.en.html,v 1.12 2005/12/04 08:13:52 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.en.html,v 1.13 2005/12/11 17:47:48 gsotirov Exp $" />
 <title>Interest calculator</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Default" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
@@ -20,7 +20,7 @@
 <link rel="author" href="mailto:Georgi Sotirov &lt;gdsotirov@dir.bg&gt;" />
 <link rel="copyright" href="#Copyright" />
 <link rel="alternate" type="text/html" href="index.bg.html" hreflang="bg" title="Лихвен калкулатор" lang="bg" />
-<script type="text/javascript" src="sprintf.js" defer="defer"></script>
+<script type="text/javascript" src="NumberFormat.js" defer="defer"></script>
 <script type="text/javascript" src="icc.js" defer="defer"></script>
 <script type="text/javascript" src="icalc.js" defer="defer"></script></head>
 
@@ -35,11 +35,11 @@
 <p class="no_print align-center">Please, enter the amount you want to make
 calculation on, the type of the deposit and the yearly nominal interest.
 Choose currency and period of the deposit in months.</p>
-<form action="#" id="CalcForm" enctype="application/x-www-form-urlencoded" method="post" onsubmit="javascript: return false;" onreset="javascript: doReset();">
+<form action="#" enctype="application/x-www-form-urlencoded" id="CalcForm" method="post" name="CalcForm"  onsubmit="javascript: return false;" onreset="javascript: Reset();">
 <div class="row">
-<label for="Amount"><span class="label">Amount</span></label>
+<label for="Amount"><span class="label">Amount:</span></label>
 <span class="input">
-<input id="Amount" name="Amount" size="16" maxlength="16" type="text" />
+<input id="Amount" name="Amount" size="16" maxlength="16" type="text" onchange="javascript: formatField(document.forms.CalcForm.Amount)" />
 <select name="Currency" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
 <option value="BGN">&nbsp; BGN Bulgarian Lev</option>
 <option value="USD">$ USD US Dollar</option>
@@ -50,7 +50,7 @@ Choose currency and period of the deposit in months.</p>
 </div>
 
 <div class="row">
-<label for="Type"><span class="label">Deposit type</span>
+<label for="Type"><span class="label">Deposit type:</span>
 <span class="input">
 <select id="Type" name="Type" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
 <option value="1">1 month</option>
@@ -64,14 +64,14 @@ Choose currency and period of the deposit in months.</p>
 </div>
 
 <div class="row">
-<label for="Interest"><span class="label">Nominal yearly interest</span>
+<label for="Interest"><span class="label">Interest:</span>
 <span class="input">
-<input id="Interest" name="Interest" size="6" maxlength="10" type="text" />&nbsp;%</span>
+<input id="Interest" name="Interest" size="6" maxlength="10" type="text" title="The interest should be the nominal yearly interest in percents" onchange="javascript: formatField(document.forms.CalcForm.Interest)" />&nbsp;%</span>
 </label>
 </div>
 
 <div class="row">
-<label for="Period"><span class="label">Period of the deposit</span>
+<label for="Period"><span class="label">Term:</span>
 <span class="input">
 <input id="Period" name="Period" size="6" maxlength="10" type="text" />&nbsp;month(s)</span></label>
 </div>
