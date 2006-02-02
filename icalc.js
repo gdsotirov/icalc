@@ -1,7 +1,7 @@
 /* Interest calculator Web Interface
  * ---
  * Written by George D. Sotirov (gdsotirov@dir.bg)
- * $Id: icalc.js,v 1.11 2005/12/11 17:47:12 gsotirov Exp $
+ * $Id: icalc.js,v 1.12 2006/02/02 19:37:24 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
@@ -38,7 +38,7 @@ var UIStringsBG = new Array(
 /*  7 */ "Месец",
 /*  8 */ "Салдо",
 /*  9 */ "Печалба",
-/* 10 */ "Печалба натрупване"
+/* 10 */ "Натрупана печалба"
 );
 
 var UIStringsEN = new Array(
@@ -51,8 +51,8 @@ var UIStringsEN = new Array(
 /*  6 */ "The period of the deposit must be multiple to the month count in the type of the deposit!",
 /*  7 */ "Month",
 /*  8 */ "Balance",
-/*  9 */ "Profit",
-/* 10 */ "Profit accumulation"
+/*  9 */ "Earned",
+/* 10 */ "Accumulated Earning"
 );
 
 function loadUIString(id) {
@@ -234,3 +234,4 @@ function makeTableRow(otable) {
   }
   otable.appendChild(new_tr);
 }
+
