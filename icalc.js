@@ -1,7 +1,7 @@
 /* Interest calculator Web Interface
  * ---
  * Written by George D. Sotirov (gdsotirov@dir.bg)
- * $Id: icalc.js,v 1.12 2006/02/02 19:37:24 gsotirov Exp $
+ * $Id: icalc.js,v 1.13 2006/02/02 19:55:08 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
@@ -182,6 +182,7 @@ function calcAndDisplay() {
   var amount = parseFloat(form.Amount.value.replace(/\s+/, ""));
   var type = parseInt(form.Type.value);
   var interest = parseFloat(form.Interest.value.replace(/\s+/, ""));
+  var itype = getRadioValue(form.InterestType);
   var period = parseInt(form.Period.value);
 
   var Output = document.getElementById("Output");
@@ -195,7 +196,7 @@ function calcAndDisplay() {
                                loadUIString(uisAccumulated)+ ", " + cur,
                                loadUIString(uisProfit) + ", " + cur,
                                loadUIString(uisProfitAcc) + ", " + cur);
-  var Rows = calc_interest(amount, type, interest, period);
+  var Rows = calc_interest(amount, type, interest, itype, period);
   var OutputTableBody = document.createElement("tbody");
   for ( var i = 1; i < Rows.length; ++i ) {
     var Row = Rows[i];
@@ -235,3 +236,12 @@ function makeTableRow(otable) {
   otable.appendChild(new_tr);
 }
 
+function getRadioValue(radio) {
+  var i = 0;
+  while ( i < radio.length ) {
+    if ( radio[i].checked )
+      return radio[i].value;
+    ++i;
+  }
+  return;
+}

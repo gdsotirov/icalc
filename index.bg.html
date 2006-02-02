@@ -8,8 +8,8 @@
 <meta name="keywords" content="лихвен калкулатор, лихва" />
 <meta name="description" content="Изчисляване на лихва по депозити" />
 <meta name="author" content="Георги Д. Сотиров" />
-<meta name="version" content="0.1.5" />
-<meta name="CVS" content="$Id: index.bg.html,v 1.17 2006/02/02 19:35:30 gsotirov Exp $" />
+<meta name="version" content="0.2.0" />
+<meta name="CVS" content="$Id: index.bg.html,v 1.18 2006/02/02 19:56:39 gsotirov Exp $" />
 <title>Лихвен калкулатор</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Подразбиращ се" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
@@ -69,9 +69,21 @@
 </div>
 
 <div class="row">
+<span class="label">Тип лихва:</span>
+<span class="input">
+<label for="InterestTypeSimple"><input id="InterestTypeSimple" name="InterestType" type="radio" value="simple" />&nbsp;Проста</label><br />
+<label for="InterestTypeCompaund"><input checked="true" id="InterestTypeCompaund" name="InterestType" type="radio" value="compaund" />&nbsp;Сложна</label>
+</span>
+</div>
+
+<div class="row">
 <label for="Period"><span class="label">Срок:</span>
 <span class="input">
 <input id="Period" name="Period" size="6" maxlength="10" type="text" />&nbsp;месец(и)</span></label>
+</div>
+
+<div class="row">
+&nbsp;
 </div>
 
 <div class="row no_print">

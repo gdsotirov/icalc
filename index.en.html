@@ -8,8 +8,8 @@
 <meta name="keywords" content="interest calculator, interest" />
 <meta name="description" content="Calculation of interest on deposits" />
 <meta name="author" content="Georgi D. Sotirov" />
-<meta name="version" content="0.1.5" />
-<meta name="CVS" content="$Id: index.en.html,v 1.14 2006/02/02 19:35:30 gsotirov Exp $" />
+<meta name="version" content="0.2.0" />
+<meta name="CVS" content="$Id: index.en.html,v 1.15 2006/02/02 19:56:39 gsotirov Exp $" />
 <title>Interest calculator</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Default" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
@@ -69,9 +69,21 @@ Choose currency and period of the deposit in months.</p>
 </div>
 
 <div class="row">
+<span class="label">Interest type:</span>
+<span class="input">
+<label for="InterestTypeSimple"><input id="InterestTypeSimple" name="InterestType" type="radio"  value="simple" />&nbsp;Simple</label><br />
+<label for="InterestTypeCompaund"><input checked="true" id="InterestTypeCompaund" name="InterestType"  type="radio" value="compaund" />&nbsp;Compaund</label>
+</span>
+</div>
+
+<div class="row">
 <label for="Period"><span class="label">Term:</span>
 <span class="input">
 <input id="Period" name="Period" size="6" maxlength="10" type="text" />&nbsp;month(s)</span></label>
+</div>
+
+<div class="row">
+&nbsp;
 </div>
 
 <div class="row no_print">
