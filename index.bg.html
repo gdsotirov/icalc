@@ -28,7 +28,7 @@
 <meta name="description" content="Изчисляване на лихва по депозити" />
 <meta name="author" content="Георги Д. Сотиров" />
 <meta name="version" content="0.2.0" />
-<meta name="CVS" content="$Id: index.bg.html,v 1.20 2006/07/17 21:27:45 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.bg.html,v 1.21 2006/07/18 20:09:19 gsotirov Exp $" />
 <title>Лихвен калкулатор</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Подразбиращ се" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
@@ -56,7 +56,7 @@
 <div class="row">
 <label for="Amount"><span class="label">Сума:</span></label>
 <span class="input">
-<input id="Amount" name="Amount" size="16" maxlength="16" type="text" onchange="javascript: formatField(document.forms.CalcForm.Amount)" />
+<input id="Amount" name="Amount" size="16" maxlength="16" type="text" onchange="javascript: formatField(document.forms.CalcForm.Amount)" value="0.0" />
 <select name="Currency" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
 <option value="BGN">&nbsp; BGN Български лев</option>
 <option value="USD">$ USD Щатски долар</option>
@@ -83,7 +83,7 @@
 <div class="row">
 <label for="Interest"><span class="label">Лихвен процент:</span>
 <span class="input">
-<input id="Interest" name="Interest" size="6" maxlength="10" type="text" title="Лихвения процент трябва да бъде годишния номинален лихвен процент" onchange="javascript: formatField(document.forms.CalcForm.Interest)" />&nbsp;%</span>
+<input id="Interest" name="Interest" size="6" maxlength="10" type="text" title="Лихвения процент трябва да бъде годишния номинален лихвен процент" onchange="javascript: formatField(document.forms.CalcForm.Interest)" value="0.0" />&nbsp;%</span>
 </label>
 </div>
 
@@ -98,7 +98,7 @@
 <div class="row">
 <label for="Period"><span class="label">Срок:</span>
 <span class="input">
-<input id="Period" name="Period" size="6" maxlength="10" type="text" />&nbsp;месец(и)</span></label>
+<input id="Period" name="Period" size="6" maxlength="10" type="text" value="0" />&nbsp;месец(и)</span></label>
 </div>
 
 <div class="row">
@@ -107,11 +107,11 @@
 
 <div class="row no_print">
 <span class="label">
-<button name="Calculate" type="submit" onclick="javascript: if (checkForm()) calcAndDisplay();">
-<img src="calc.png" alt="" height="16" width="16" />&nbsp;Изчисли</button></span>
+<button name="Calculate" type="submit" onclick="javascript: if (checkForm()) calcAndDisplay();" onkeypress="javascript: if (checkForm()) calcAndDisplay();">
+<img src="calc.png" alt="*" height="16" width="16" />&nbsp;Изчисли</button></span>
 <span class="input">
 <button name="Clear" type="reset">
-<img src="clear.png" alt="" height="16" width="16" />&nbsp;Изчисти</button></span>
+<img src="clear.png" alt="*" height="16" width="16" />&nbsp;Изчисти</button></span>
 </div>
 <div class="row">
 <br />
@@ -127,17 +127,16 @@
 калкулатора, са тези обявени от <a href="http://www.fibank.bg/">Първа
 Инвестиционна Банка</a> и са валидни от 1 Март 2005 г.</p>
 <hr />
-<p>
+<map><p>
 <!-- Valid XHTML 1.0 -->
 <a href="http://validator.w3.org/check?uri=referer" hreflang="en">
-<img src="valid-xhtml.png" alt="[Икона Валиден XHTML 1.0]" title="Valid XHTML 1.0!" height="31" width="88" /></a>
+<img alt="[Икона Валиден XHTML 1.0]" height="31" longdesc="http://validator.w3.org/" src="valid-xhtml.png" title="Валиден XHTML 1.0!" width="88" /></a>
 <!-- Valid CSS -->
-<a href="http://jigsaw.w3.org/css-validator/" hreflang="en">
-<img src="valid-css.png" alt="[Икона Валиден CSS]" title="Valid CSS!" height="31" width="88" /></a>
+<a href="http://jigsaw.w3.org/css-validator/check/referer" hreflang="en">
+<img alt="[Икона Валиден CSS]" height="31" longdesc="http://jigsaw.w3.org/" src="valid-css.png" title="Валиден CSS!" width="88" /></a>
 <!-- UTF-8 Encoded -->
 <a href="http://www.unicode.org/" hreflang="en">
-<img src="unicode.png" alt="[Кодирано в UTF-8]" title="Encoded in UTF-8!" height="31" width="88" /></a>
-</p>
+<img src="unicode.png" alt="[Кодирано в UTF-8]" title="Encoded in UTF-8!" height="31" width="88" /></a></p></map>
 <p><a href="terms.bg.html">Условия за ползване</a></p>
 <!-- Copyright -->
 <p class="copyright"><a name="Copyright">Copyright</a> © 2004-2005

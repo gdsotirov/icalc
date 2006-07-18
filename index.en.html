@@ -28,7 +28,7 @@
 <meta name="description" content="Calculation of interest on deposits" />
 <meta name="author" content="Georgi D. Sotirov" />
 <meta name="version" content="0.2.0" />
-<meta name="CVS" content="$Id: index.en.html,v 1.17 2006/07/17 21:27:45 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.en.html,v 1.18 2006/07/18 20:09:19 gsotirov Exp $" />
 <title>Interest calculator</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Default" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
@@ -56,7 +56,7 @@ Choose currency and period of the deposit in months.</p>
 <div class="row">
 <label for="Amount"><span class="label">Amount:</span></label>
 <span class="input">
-<input id="Amount" name="Amount" size="16" maxlength="16" type="text" onchange="javascript: formatField(document.forms.CalcForm.Amount)" />
+<input id="Amount" name="Amount" size="16" maxlength="16" type="text" onchange="javascript: formatField(document.forms.CalcForm.Amount)" value="0.0" />
 <select name="Currency" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
 <option value="BGN">&nbsp; BGN Bulgarian Lev</option>
 <option value="USD">$ USD US Dollar</option>
@@ -83,7 +83,7 @@ Choose currency and period of the deposit in months.</p>
 <div class="row">
 <label for="Interest"><span class="label">Interest:</span>
 <span class="input">
-<input id="Interest" name="Interest" size="6" maxlength="10" type="text" title="The interest should be the nominal yearly interest in percents" onchange="javascript: formatField(document.forms.CalcForm.Interest)" />&nbsp;%</span>
+<input id="Interest" name="Interest" size="6" maxlength="10" type="text" title="The interest should be the nominal yearly interest in percents" onchange="javascript: formatField(document.forms.CalcForm.Interest)" value="0.0" />&nbsp;%</span>
 </label>
 </div>
 
@@ -98,7 +98,7 @@ Choose currency and period of the deposit in months.</p>
 <div class="row">
 <label for="Period"><span class="label">Term:</span>
 <span class="input">
-<input id="Period" name="Period" size="6" maxlength="10" type="text" />&nbsp;month(s)</span></label>
+<input id="Period" name="Period" size="6" maxlength="10" type="text" value="0" />&nbsp;month(s)</span></label>
 </div>
 
 <div class="row">
@@ -107,11 +107,11 @@ Choose currency and period of the deposit in months.</p>
 
 <div class="row no_print">
 <span class="label">
-<button name="Calculate" type="submit" onclick="javascript: if (checkForm()) calcAndDisplay();">
-<img src="calc.png" alt="" height="16" width="16" />&nbsp;Calculate</button></span>
+<button name="Calculate" type="submit" onclick="javascript: if (checkForm()) calcAndDisplay();" onkeypress="javascript: if (checkForm()) calcAndDisplay();">
+<img src="calc.png" alt="*" height="16" width="16" />&nbsp;Calculate</button></span>
 <span class="input">
 <button name="Clear" type="reset">
-<img src="clear.png" alt="" height="16" width="16" />&nbsp;Clear</button></span>
+<img src="clear.png" alt="*" height="16" width="16" />&nbsp;Clear</button></span>
 </div>
 <div class="row">
 <br />
@@ -126,17 +126,16 @@ Choose currency and period of the deposit in months.</p>
 <p>
 <i>Note</i>: Predefined interests, used in the calculator are taken from the bulletin of <a href="http://www.fibank.bg/">First Investment Bank</a> and are valid from March 1st 2005.</p>
 <hr />
-<p>
+<map><p>
 <!-- Valid XHTML 1.0 -->
-<a href="http://validator.w3.org/check?uri=referer">
-<img src="valid-xhtml.png" alt="[Valid XHTML 1.0 Icon]" title="Valid XHTML 1.0!" height="31" width="88" /></a>
+<a href="http://validator.w3.org/check?uri=referer" hreflang="en">
+<img alt="[Valid XHTML 1.0 icon]" height="31" longdesc="http://validator.w3.org/" src="valid-xhtml.png" title="Valid XHTML 1.0!" width="88" /></a>
 <!-- Valid CSS -->
-<a href="http://jigsaw.w3.org/css-validator/">
-<img src="valid-css.png" alt="[Valid CSS Icon]" title="Valid CSS!" height="31" width="88" /></a>
+<a href="http://jigsaw.w3.org/css-validator/check/referer" hreflang="en">
+<img alt="[Valid CSS icon]" height="31" longdesc="http://jigsaw.w3.org/" src="valid-css.png" title="Valid CSS!" width="88" /></a>
 <!-- UTF-8 Encoded -->
-<a href="http://www.unicode.org/">
-<img src="unicode.png" alt="[Encoded in UTF-8]" title="Encoded in UTF-8!" height="31" width="88" /></a>
-</p>
+<a href="http://www.unicode.org/" hreflang="en">
+<img alt="[Encoded in UTF-8 icon]" height="31" longdesc="http://www.unicode.org/" src="unicode.png" title="Encoded in UTF-8!" width="88" /></a></p></map>
 <p><a href="terms.en.html">Terms of use</a></p>
 <!-- Copyright -->
 <p class="copyright"><a name="Copyright">Copyright</a> © 2004-2005
