@@ -28,7 +28,7 @@
 <meta name="description" content="Изчисляване на лихва по депозити" />
 <meta name="author" content="Георги Д. Сотиров" />
 <meta name="version" content="0.2.0" />
-<meta name="CVS" content="$Id: index.bg.html,v 1.22 2006/07/18 20:14:46 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.bg.html,v 1.23 2006/12/05 20:37:05 gsotirov Exp $" />
 <title>Лихвен калкулатор</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Подразбиращ се" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
@@ -52,13 +52,13 @@
 <p class="no_print align-center">Моля, въведете размера на сумата за която
 желаете да направите изчисление, типа на депозита и годишния номинален лихвен
 процент. Изберете валута и срок на депозита в месеци.</p>
-<form action="#" enctype="application/x-www-form-urlencoded" id="CalcForm" method="post"  onsubmit="javascript: return false;" onreset="javascript: Reset();">
+<form action="#" enctype="application/x-www-form-urlencoded" id="CalcForm" method="post"  onsubmit="javascript: return false;" onreset="javascript: doReset();">
 <div class="row">
 <label for="Amount"><span class="label">Сума:</span></label>
 <span class="input">
 <input id="Amount" name="Amount" size="16" maxlength="16" type="text" onchange="javascript: formatField(document.forms.CalcForm.Amount)" value="0.0" />
 <select name="Currency" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
-<option value="BGN">&nbsp; BGN Български лев</option>
+<option value="BGN" selected="selected">&nbsp; BGN Български лев</option>
 <option value="USD">$ USD Щатски долар</option>
 <option value="EUR">€ EUR Евро</option>
 <option value="CHF">&nbsp; CHF Швейцарски франк</option>
@@ -70,7 +70,7 @@
 <label for="Type"><span class="label">Тип:</span>
 <span class="input">
 <select id="Type" name="Type" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
-<option value="1">1 месец</option>
+<option value="1" selected="selected">1 месец</option>
 <option value="3">3 месеца</option>
 <option value="6">6 месеца</option>
 <option value="12">12 месеца</option>

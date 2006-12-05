@@ -28,7 +28,7 @@
 <meta name="description" content="Calculation of interest on deposits" />
 <meta name="author" content="Georgi D. Sotirov" />
 <meta name="version" content="0.2.0" />
-<meta name="CVS" content="$Id: index.en.html,v 1.19 2006/07/18 20:14:46 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.en.html,v 1.20 2006/12/05 20:37:05 gsotirov Exp $" />
 <title>Interest calculator</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Default" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
@@ -52,14 +52,14 @@
 <p class="no_print align-center">Please, enter the amount you want to make
 calculation on, the type of the deposit and the yearly nominal interest.
 Choose currency and period of the deposit in months.</p>
-<form action="#" enctype="application/x-www-form-urlencoded" id="CalcForm" method="post"  onsubmit="javascript: return false;" onreset="javascript: Reset();">
+<form action="#" enctype="application/x-www-form-urlencoded" id="CalcForm" method="post"  onsubmit="javascript: return false;" onreset="javascript: doReset();">
 <div class="row">
 <label for="Amount"><span class="label">Amount:</span></label>
 <span class="input">
 <input id="Amount" name="Amount" size="16" maxlength="16" type="text" onchange="javascript: formatField(document.forms.CalcForm.Amount)" value="0.0" />
 <select name="Currency" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
 <option value="BGN">&nbsp; BGN Bulgarian Lev</option>
-<option value="USD">$ USD US Dollar</option>
+<option value="USD" selected="selected">$ USD US Dollar</option>
 <option value="EUR">€ EUR Euro</option>
 <option value="CHF">&nbsp; CHF Swiss Franc</option>
 <option value="GBP">£ GBP British Pound</option>
@@ -70,7 +70,7 @@ Choose currency and period of the deposit in months.</p>
 <label for="Type"><span class="label">Deposit type:</span>
 <span class="input">
 <select id="Type" name="Type" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
-<option value="1">1 month</option>
+<option value="1" selected="selected">1 month</option>
 <option value="3">3 months</option>
 <option value="6">6 months</option>
 <option value="12">12 months</option>
