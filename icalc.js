@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * $Id: icalc.js,v 1.14 2006/02/15 20:19:38 gsotirov Exp $
+ * $Id: icalc.js,v 1.15 2006/12/05 20:40:50 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
@@ -125,13 +125,22 @@ function checkField(fld, type, uisFill, uisCorr) {
   return true;
 }
 
-function initForm() {
-    var Form = document.forms.CalcForm;
-    Form.Amount.focus();
+function initForm(forReset) {
+  forReset = typeof(forReset) != 'undefined' ? forReset : false;
+  var Form = document.forms.CalcForm;
+
+  Form.Amount.focus();
+  if ( forReset ) {
+    var defType = getDefaultSelected(Form.Type).value;
+    var defCurr = getDefaultSelected(Form.Currency).value;
+    changeInterest(defType, defCurr, Form.Interest);
+  }
+  else {
     changeInterest(Form.Type.value, Form.Currency.value, Form.Interest);
+  }
 }
 
-function changeInterest(months, cur, element) {
+function changeInterest(months, curr, element) {
   var index = 0;
 
   switch ( parseInt(months) ) {
@@ -143,7 +152,7 @@ function changeInterest(months, cur, element) {
     case 24: index = 5; break;
     case 36: index = 6; break;
   }
-  switch ( cur ) {
+  switch ( curr ) {
     case "BGN": interest = formatNumber(BGNInterests[index]); break;
     case "USD": interest = formatNumber(USDInterests[index]); break;
     case "EUR": interest = formatNumber(EURInterests[index]); break;
@@ -151,13 +160,13 @@ function changeInterest(months, cur, element) {
     case "GBP": interest = formatNumber(GBPInterests[index]); break;
     default   : interest = formatNumber(0.0); break;
   }
-  element.value = interest;
+  element.defaultValue = interest;
 }
 
-function Reset() {
+function doReset() {
   var Output = document.getElementById("Output");
   removeAllChilds(Output);
-  initForm();
+  initForm(true);
 }
 
 function checkForm() {
@@ -259,3 +268,21 @@ function getRadioValue(radio) {
   }
   return;
 }
+
+/* Description: Retrieve the default selected element from an option group.
+ *              (e.g. <option id="default" selected="selected">Default</option>
+ */
+function getDefaultSelected(element) {
+  if ( element.options ) {
+    var i = 0;
+    while ( i < element.options.length ) {
+      if ( element.options[i].defaultSelected ) {
+        return element.options[i];
+      }
+      ++i;
+    }
+    return element.options[0];
+  }
+  return;
+}
+
