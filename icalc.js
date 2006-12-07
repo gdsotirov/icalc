@@ -1,4 +1,4 @@
-/* Interest calculator Web Interface
+/* Interest Calculator
  * Copyright (C) 2004-2006  Georgi D. Sotirov
  *
  * This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * $Id: icalc.js,v 1.15 2006/12/05 20:40:50 gsotirov Exp $
+ * ---------------------------------------------------------------------------
+ * Description: Interest Calculator UI JavaScript
+ * Version: 0.3.1
+ * $Id: icalc.js,v 1.16 2006/12/07 09:59:58 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
