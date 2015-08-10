@@ -1,5 +1,5 @@
 /* Interest Calculator
- * Copyright (C) 2004-2006  Georgi D. Sotirov
+ * Copyright (C) 2004-2015  Georgi D. Sotirov
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,19 +18,19 @@
  * ---------------------------------------------------------------------------
  * Description: Interest Calculator UI JavaScript
  * Version: 0.3.1
- * $Id: icalc.js,v 1.16 2006/12/07 09:59:58 gsotirov Exp $
+ * $Id: icalc.js,v 1.17 2015/08/10 16:03:16 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
- * First Investment Bank as of 2005-03-01
+ * First Investment Bank as of 2015-05-12
  * The arrays should contain the interests for 1, 3, 6, 12, 18, 24 and
  * 36 months deposits in that order.
  */
-var BGNInterests = new Array(3.50, 4.00, 4.50, 6.00, 7.00, 7.50, 9.00);
-var USDInterests = new Array(2.75, 3.25, 4.00, 4.50, 5.00, 5.50, 7.00);
-var EURInterests = new Array(2.50, 3.00, 3.50, 4.50, 5.00, 5.50, 7.00);
+var BGNInterests = new Array(0.45, 0.75, 1.35, 2.10, 2.45, 2.70, 2.80);
+var USDInterests = new Array(0.30, 0.50, 0.80, 1.10, 1.20, 1.40, 1.70);
+var EURInterests = new Array(0.30, 0.75, 1.05, 1.60, 1.85, 2.20, 2.40);
 var CHFInterests = new Array(0.30, 0.40, 0.50, 0.60, 0.00, 0.00, 0.00);
-var GBPInterests = new Array(3.50, 3.75, 4.00, 4.50, 5.00, 5.50, 7.00);
+var GBPInterests = new Array(0.40, 0.85, 1.15, 1.45, 1.60, 1.70, 2.10);
 
 var uisPlsFillAmount = 0;
 var uisPlsCorrAmount = 1;
