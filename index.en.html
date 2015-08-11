@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="bg">
 
 <head>
-<meta http-equiv="Content-Type" content="test/html; charset=UTF-8" />
+<meta charset="utf-8">
 <!--
   Interest Calculator
   Copyright (C) 2004-2015  Georgi D. Sotirov
@@ -28,10 +26,10 @@
 <meta name="description" content="Calculation of interest on deposits" />
 <meta name="author" content="Georgi D. Sotirov" />
 <meta name="version" content="0.3.2" />
-<meta name="CVS" content="$Id: index.en.html,v 1.25 2015/08/11 16:56:48 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.en.html,v 1.26 2015/08/11 18:12:34 gsotirov Exp $" />
 <title>Interest calculator</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Default" type="text/css" />
-<link rel="stylesheet" href="speech.css" media="aural, speech" type="text/css" />
+<link rel="stylesheet" href="speech.css" media="speech" type="text/css" />
 <link rel="icon" href="icalc_icon.ico" />
 <link rel="shortcut icon" href="icalc_icon.ico" />
 <link rel="author" href="mailto:Georgi%20Sotirov%20%3Cgdsotirov@dir.bg%3E" />
@@ -39,19 +37,25 @@
 <link rel="alternate" type="text/html" href="index.bg.html" hreflang="bg" title="Лихвен калкулатор" lang="bg" />
 <script type="text/javascript" src="NumberFormat.js" defer="defer"></script>
 <script type="text/javascript" src="icc.js" defer="defer"></script>
-<script type="text/javascript" src="icalc.js" defer="defer"></script></head>
+<script type="text/javascript" src="icalc.js" defer="defer"></script>
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
 
 <body onload="javascript: initForm();">
-<div id="Header">
+<header>
 <h1>Interest calculator</h1>
-<p class="align-center">
-<a href="index.bg.html" hreflang="bg" lang="bg">Български</a></p>
-</div>
+</header>
 
-<div id="Calculator">
-<p class="no_print align-center">Please, enter the amount you want to make
+<nav>
+<a href="index.bg.html" hreflang="bg" lang="bg">Български</a></p>
+</nav>
+
+<section id="Calculator">
+<h2 class="no_print align-center">Please, enter the amount you want to make
 calculation on, the type of the deposit and the yearly nominal interest.
-Choose currency and period of the deposit in months.</p>
+Choose currency and period of the deposit in months.</h2>
 <form action="#" enctype="application/x-www-form-urlencoded" id="CalcForm" method="post"  onsubmit="javascript: return false;" onreset="javascript: doReset();">
 <div class="row">
 <label for="Amount"><span class="label">Amount:</span></label>
@@ -90,8 +94,8 @@ Choose currency and period of the deposit in months.</p>
 <div class="row">
 <span class="label">Interest type:</span>
 <span class="input">
-<label for="InterestTypeSimple"><input id="InterestTypeSimple" name="InterestType" type="radio"  value="simple" />&nbsp;Simple</label><br />
-<label for="InterestTypeCompaund"><input checked="checked" id="InterestTypeCompaund" name="InterestType"  type="radio" value="compaund" />&nbsp;Compaund</label>
+<label for="InterestTypeSimple"><input id="InterestTypeSimple" name="InterestType" type="radio" value="simple" />&nbsp;Simple</label><br />
+<label for="InterestTypeCompaund"><input checked="checked" id="InterestTypeCompaund" name="InterestType" type="radio" value="compaund" />&nbsp;Compaund</label>
 </span>
 </div>
 
@@ -116,23 +120,23 @@ Choose currency and period of the deposit in months.</p>
 <div class="row">
 <br />
 </div>
-</form></div>
+</form>
+</section>
 
-<div id="Output">
-</div>
+<section id="Output">
+</section>
 
-<!-- F O O T E R -->
-<div id="Footer">
+<footer>
 <p><i>Note</i>: Predefined interests, used in
 the calculator, are taken from the bulletin of <a href="http://www.fibank.bg/">First
 Investment Bank</a> and are valid since May 12th 2005.</p>
 <hr />
-<map id="ConformanceBar"><p>
+<map id="ConformanceBar" name="ConformanceBar"><p>
 <!-- Valid XHTML 1.0 -->
-<a href="http://validator.w3.org/check?uri=referer" hreflang="en">
-<img alt="[Valid XHTML 1.0 icon]" height="31" longdesc="http://validator.w3.org/" src="valid-xhtml.png" title="Valid XHTML 1.0!" width="88" /></a>
+<a href="https://validator.w3.org/check?uri=referer" hreflang="en">
+<img alt="[Valid HTML 5.0 icon]" height="31" longdesc="http://validator.w3.org/" src="valid-html5.png" title="Valid HTML 5.0!" width="88" /></a>
 <!-- Valid CSS -->
-<a href="http://jigsaw.w3.org/css-validator/check/referer" hreflang="en">
+<a href="https://jigsaw.w3.org/css-validator/check/referer" hreflang="en">
 <img alt="[Valid CSS icon]" height="31" longdesc="http://jigsaw.w3.org/" src="valid-css.png" title="Valid CSS!" width="88" /></a>
 <!-- UTF-8 Encoded -->
 <a href="http://www.unicode.org/" hreflang="en">
@@ -140,7 +144,7 @@ Investment Bank</a> and are valid since May 12th 2005.</p>
 </p></map>
 <p><a href="terms.en.html">Terms of use</a></p>
 <!-- Copyright -->
-<p class="copyright"><a name="Copyright">Copyright</a> © 2004-2015
+<p class="copyright"><a id="Copyright">Copyright</a> © 2004-2015
 <a href="mailto:gdsotirov@dir.bg">Georgi D. Sotirov</a><br />
 This application can be copyed, distributed and published in original
 or modified version without any restrictions if the upper copyright notice
@@ -148,7 +152,7 @@ and the current paragraph be included in all such copyes or derivative
 works. When distributing modified version by all means a link to the original
 version should be included or the original and the modified versions should be
 distributed together.</p>
-</div>
+</footer>
 
 </body>
 </html>
