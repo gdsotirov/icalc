@@ -19,7 +19,7 @@
  * Description: Interest Calculator Styles
  * Version: 0.3.1
  * Media: screen, print
- * $Id: icalc.css,v 1.12 2015/08/11 18:12:00 gsotirov Exp $
+ * $Id: icalc.css,v 1.13 2015/08/12 17:33:59 gsotirov Exp $
  */
 
 @media screen, print {
@@ -56,7 +56,7 @@
     width: 50%;
   }
 
-  footer {
+  footer, nav {
     text-align: center;
   }
 
@@ -80,10 +80,6 @@
 
   img {
     border: 0 none;
-  }
-
-  nav {
-    text-align: center;
   }
 
   table {
@@ -115,6 +111,11 @@
   table#OutputTable th {
     background-color: #ccc;
     color: inherit;
+  }
+
+  section h2 {
+    font-size: 1.2em;
+    font-weight: normal;
   }
 
   /* Pseudo classes */
@@ -168,11 +169,6 @@
   input:hover, input:focus, select:hover, select:focus {
     background-color: #fff;
     color: inherit;
-  }
-
-  section h2 {
-    font-size: 1.2em;
-    font-weight: normal;
   }
 
   .no_screen {
