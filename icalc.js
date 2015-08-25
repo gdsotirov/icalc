@@ -18,7 +18,7 @@
  * ---------------------------------------------------------------------------
  * Description: Interest Calculator UI JavaScript
  * Version: 0.3.1
- * $Id: icalc.js,v 1.17 2015/08/10 16:03:16 gsotirov Exp $
+ * $Id: icalc.js,v 1.18 2015/08/25 18:26:42 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
@@ -132,7 +132,6 @@ function initForm(forReset) {
   forReset = typeof(forReset) != 'undefined' ? forReset : false;
   var Form = document.forms.CalcForm;
 
-  Form.Amount.focus();
   if ( forReset ) {
     var defType = getDefaultSelected(Form.Type).value;
     var defCurr = getDefaultSelected(Form.Currency).value;
@@ -164,6 +163,29 @@ function changeInterest(months, curr, element) {
     default   : interest = formatNumber(0.0); break;
   }
   element.defaultValue = interest;
+}
+
+function onChangeCurrency () {
+  var form  = document.forms.CalcForm;
+
+  changeInterest(form.Type.value, form.Currency.value, form.Interest);
+}
+
+function onChangeType() {
+  var form    = document.forms.CalcForm;
+  var type    = form.Type;
+  var period  = form.Period;
+
+  changeInterest(type.value, form.Currency.value, form.Interest)
+
+  if ( period.value == "" ) {
+    if ( parseInt(type.value) <= 12 ) {
+      period.value = "12";
+    }
+    else {
+      period.value = type.value;
+    }
+  }
 }
 
 function doReset() {
