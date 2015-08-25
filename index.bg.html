@@ -26,7 +26,7 @@
 <meta name="description" content="Изчисляване на лихва по депозити" />
 <meta name="author" content="Георги Д. Сотиров" />
 <meta name="version" content="0.3.2" />
-<meta name="CVS" content="$Id: index.bg.html,v 1.29 2015/08/11 18:12:34 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.bg.html,v 1.30 2015/08/25 18:27:42 gsotirov Exp $" />
 <title>Лихвен калкулатор</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Подразбиращ се" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="speech" type="text/css" />
@@ -43,7 +43,7 @@
 <![endif]-->
 </head>
 
-<body onload="javascript: initForm();">
+<body onload="javascript: initForm()">
 <header>
 <h1>Лихвен калкулатор</h1>
 </header>
@@ -56,12 +56,16 @@
 <h2 class="no_print align-center">Моля, въведете размера на сумата за която
 желаете да направите изчисление, типа на депозита и годишния номинален лихвен
 процент. Изберете валута и срок на депозита в месеци.</h2>
-<form action="#" enctype="application/x-www-form-urlencoded" id="CalcForm" method="post"  onsubmit="javascript: return false;" onreset="javascript: doReset();">
+<form action="#" enctype="application/x-www-form-urlencoded" id="CalcForm"
+      method="post"
+      onsubmit="javascript: return false;"
+      onreset="javascript: doReset();">
 <div class="row">
 <label for="Amount"><span class="label">Сума:</span></label>
 <span class="input">
-<input id="Amount" name="Amount" size="16" maxlength="16" type="text" onchange="javascript: formatField(document.forms.CalcForm.Amount)" value="0.0" />
-<select name="Currency" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
+<input id="Amount" name="Amount" size="16" maxlength="16" type="text" autofocus
+       onchange="javascript: formatField(document.forms.CalcForm.Amount)" />
+<select name="Currency" onchange="javascript: onChangeCurrency()">
 <option value="BGN" selected="selected">&nbsp; BGN Български лев</option>
 <option value="USD">$ USD Щатски долар</option>
 <option value="EUR">€ EUR Евро</option>
@@ -73,7 +77,7 @@
 <div class="row">
 <label for="Type"><span class="label">Тип:</span>
 <span class="input">
-<select id="Type" name="Type" onchange="javascript: changeInterest(document.forms.CalcForm.Type.value, document.forms.CalcForm.Currency.value, document.forms.CalcForm.Interest);">
+<select id="Type" name="Type" onchange="javascript: onChangeType()">
 <option value="1" selected="selected">1 месец</option>
 <option value="3">3 месеца</option>
 <option value="6">6 месеца</option>
@@ -87,22 +91,29 @@
 <div class="row">
 <label for="Interest"><span class="label">Лихвен процент:</span>
 <span class="input">
-<input id="Interest" name="Interest" size="6" maxlength="10" type="text" title="Лихвения процент трябва да бъде годишния номинален лихвен процент" onchange="javascript: formatField(document.forms.CalcForm.Interest)" value="0.0" />&nbsp;%</span>
+<input id="Interest" name="Interest" size="6" maxlength="10" type="text"
+       title="Лихвения процент трябва да бъде годишния номинален лихвен процент"
+       onchange="javascript: formatField(document.forms.CalcForm.Interest)" />&nbsp;%</span>
 </label>
 </div>
 
 <div class="row">
 <span class="label">Тип лихва:</span>
 <span class="input">
-<label for="InterestTypeSimple"><input id="InterestTypeSimple" name="InterestType" type="radio" value="simple" />&nbsp;Проста</label><br />
-<label for="InterestTypeCompaund"><input checked="checked" id="InterestTypeCompaund" name="InterestType" type="radio" value="compaund" />&nbsp;Сложна</label>
+<label for="InterestTypeSimple">
+<input id="InterestTypeSimple" name="InterestType" type="radio"
+       value="simple" />&nbsp;Проста</label><br />
+<label for="InterestTypeCompaund">
+<input checked="checked" id="InterestTypeCompaund" name="InterestType"
+       type="radio" value="compaund" />&nbsp;Сложна</label>
 </span>
 </div>
 
 <div class="row">
 <label for="Period"><span class="label">Срок:</span>
 <span class="input">
-<input id="Period" name="Period" size="6" maxlength="10" type="text" value="0" />&nbsp;месец(и)</span></label>
+<input id="Period" name="Period" size="6" maxlength="10"
+       type="text" />&nbsp;месец(и)</span></label>
 </div>
 
 <div class="row">
@@ -111,7 +122,9 @@
 
 <div class="row no_print">
 <span class="label">
-<button name="Calculate" type="submit" onclick="javascript: if (checkForm()) calcAndDisplay();" onkeypress="javascript: if (checkForm()) calcAndDisplay();">
+<button name="Calculate" type="submit"
+        onclick="javascript: if (checkForm()) calcAndDisplay();"
+        onkeypress="javascript: if (checkForm()) calcAndDisplay();">
 <img src="calc.png" alt="*" height="16" width="16" />&nbsp;Изчисли</button></span>
 <span class="input">
 <button name="Clear" type="reset">
@@ -134,23 +147,29 @@
 <map id="ConformanceBar" name="ConformanceBar"><p>
 <!-- Valid XHTML 1.0 -->
 <a href="https://validator.w3.org/check?uri=referer" hreflang="en">
-<img alt="[Икона Валиден HTML 5.0]" height="31" longdesc="http://validator.w3.org/" src="valid-html5.png" title="Валиден HTML 5.0!" width="88" /></a>
+<img alt="[Икона Валиден HTML 5.0]" height="31"
+     longdesc="http://validator.w3.org/" src="valid-html5.png"
+     title="Валиден HTML 5.0!" width="88" /></a>
 <!-- Valid CSS -->
 <a href="https://jigsaw.w3.org/css-validator/check/referer" hreflang="en">
-<img alt="[Икона Валиден CSS]" height="31" longdesc="http://jigsaw.w3.org/" src="valid-css.png" title="Валиден CSS!" width="88" /></a>
+<img alt="[Икона Валиден CSS]" height="31" longdesc="http://jigsaw.w3.org/"
+     src="valid-css.png" title="Валиден CSS!" width="88" /></a>
 <!-- UTF-8 Encoded -->
 <a href="http://www.unicode.org/" hreflang="en">
-<img alt="[Икона Кодирано в UTF-8]" height="31" longdesc="http://www.unicode.org/" src="unicode.png" title="Кодирано в UTF-8!" width="88" /></a>
+<img alt="[Икона Кодирано в UTF-8]" height="31"
+     longdesc="http://www.unicode.org/" src="unicode.png"
+     title="Кодирано в UTF-8!" width="88" /></a>
 </p></map>
 <p><a href="terms.bg.html">Условия за ползване</a></p>
 <!-- Copyright -->
 <p class="copyright"><a id="Copyright">Copyright</a> © 2004-2015
 <a href="mailto:gdsotirov@dir.bg">Георги Д. Сотиров</a><br />
 Това приложение може да бъде копирано, разпространявано и публикувано в
-първоначален или изменен вид без всякакви ограничения при условие, че горната бележка за авторските права,
-както и настоящият абзац, бъдат включени във всички такива копия или производни
-работи. При разпространяване на изменена версия по какъвто и да е начин трябва да бъде включена
-препратка към първоначалната версия или пък първоначалната и изменената версия да се
+първоначален или изменен вид без всякакви ограничения при условие, че горната
+бележка за авторските права, както и настоящият абзац, бъдат включени във
+всички такива копия или производни работи. При разпространяване на изменена
+версия по какъвто и да е начин трябва да бъде включена препратка към
+първоначалната версия или пък първоначалната и изменената версия да се
 разпространяват заедно.</p>
 </footer>
 
