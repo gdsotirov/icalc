@@ -1,5 +1,9 @@
 Intereset Calculator Changes Log
 
+icalc 0.4.0 (2015-08-27)
+* New: Rewrite in HTML5 (see bug 160)
+* New: Term value is set initially with the length in months of depsit's type (see bug 164)
+
 icalc 0.3.2 (2015-08-11)
 * New: Update default rates (see bug 157 - https://sotirov-bg.net/bugzilla/show_bug.cgi?id=157)
 * Fix: Move DOCTYPE and charset definitions in the begining (see bug 158 - https://sotirov-bg.net/bugzilla/show_bug.cgi?id=158)
@@ -17,4 +21,3 @@ solves a unpleasant effect with the form reset
 icalc 0.2.1 (2006-03-20)
 ------------------------------------------------------------------------------
 * First public release
-
