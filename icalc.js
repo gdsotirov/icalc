@@ -17,8 +17,8 @@
  *
  * ---------------------------------------------------------------------------
  * Description: Interest Calculator UI JavaScript
- * Version: 0.3.1
- * $Id: icalc.js,v 1.18 2015/08/25 18:26:42 gsotirov Exp $
+ * Version: 0.4.0
+ * $Id: icalc.js,v 1.19 2015/08/27 16:35:24 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
