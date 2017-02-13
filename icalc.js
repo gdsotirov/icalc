@@ -18,7 +18,7 @@
  * ---------------------------------------------------------------------------
  * Description: Interest Calculator UI JavaScript
  * Version: 0.4.0
- * $Id: icalc.js,v 1.19 2015/08/27 16:35:24 gsotirov Exp $
+ * $Id: icalc.js,v 1.20 2017/02/13 13:08:22 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
@@ -190,7 +190,10 @@ function onChangeType() {
 
 function doReset() {
   var Output = document.getElementById("Output");
-  removeAllChilds(Output);
+  var OutputTable = document.getElementById("OutputTable");
+  if ( OutputTable ) {
+    Output.removeChild(OutputTable);
+  }
   initForm(true);
 }
 
@@ -234,8 +237,11 @@ function calcAndDisplay() {
   var period = parseInt(form.Period.value);
 
   var Output = document.getElementById("Output");
-  removeAllChilds(Output);
-  var OutputTable = document.createElement("table");
+  var OutputTable = document.getElementById("OutputTable");
+  if ( OutputTable ) {
+    Output.removeChild(OutputTable);
+  }
+  OutputTable = document.createElement("table");
   OutputTable.setAttribute("class", "tbThinBorder");
   OutputTable.setAttribute("id", "OutputTable");
   OutputTable.setAttribute("cellspacing", "0");
