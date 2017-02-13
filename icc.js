@@ -1,5 +1,5 @@
 /* Interest Calculator
- * Copyright (C) 2004-2015  Georgi D. Sotirov
+ * Copyright (C) 2004-2017  Georgi D. Sotirov
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  * ---------------------------------------------------------------------------
  * Description: Interest Calculator Core JavaScript
  * Version: 0.4.0
- * $Id: icc.js,v 1.11 2015/08/27 16:35:24 gsotirov Exp $
+ * $Id: icc.js,v 1.12 2017/02/13 14:30:26 gsotirov Exp $
  */
 
 /* Function   : calc_interest
@@ -44,14 +44,32 @@ function calc_interest(amount, type, interest, itype, period) {
       else
         profit = acc * interest / 100 * type / 12;
     }
-    else
+    else {
       profit = 0.0;
-    if ( itype == "compaund" ) {
-      acc += profit;
-      Rows[i] = new Array(month, acc, profit, acc - amount);
     }
-    else
-      Rows[i] = new Array(month, amount, profit, i * profit);
+
+    /* According to art. 38, par. 13 and art. 46, par. 4 of ЗДДФЛ
+     * see http://www.lex.bg/bg/laws/ldoc/2135538631
+     */
+    profit_tax = profit * 8 / 100;
+
+    if ( itype == "compaund" ) {
+      acc += profit - profit_tax;
+      Rows[i] = new Array(month,
+                          profit,
+                          profit_tax,
+                          profit - profit_tax,
+                          acc - amount,
+                          acc);
+    }
+    else {
+      Rows[i] = new Array(month,
+                          profit,
+                          profit_tax,
+                          profit - profit_tax,
+                          i * profit - profit_tax,
+                          amount);
+    }
   }
 
   return Rows;
