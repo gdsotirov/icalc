@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <!--
   Interest Calculator
-  Copyright (C) 2004-2015  Georgi D. Sotirov
+  Copyright (C) 2004-2017  Georgi D. Sotirov
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 <meta name="description" content="Calculation of interest on deposits" />
 <meta name="author" content="Georgi D. Sotirov" />
 <meta name="version" content="0.4.0" />
-<meta name="CVS" content="$Id: index.en.html,v 1.28 2015/08/27 16:35:24 gsotirov Exp $" />
+<meta name="CVS" content="$Id: index.en.html,v 1.29 2017/02/13 13:07:09 gsotirov Exp $" />
 <title>Interest calculator</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Default" type="text/css" />
 <link rel="stylesheet" href="speech.css" media="speech" type="text/css" />
@@ -49,13 +49,14 @@
 </header>
 
 <nav>
-<a href="index.bg.html" hreflang="bg" lang="bg">Български</a></p>
+<a href="index.bg.html" hreflang="bg" lang="bg">Български</a>
 </nav>
 
 <section id="Calculator">
-<h2 class="no_print align-center">Please, enter the amount you want to make
-calculation on, the type of the deposit and the yearly nominal interest.
-Choose currency and period of the deposit in months.</h2>
+<h2 class="no_print align-center">Input data</h2>
+<p class="no_print align-center">Please, enter the amount you want to use for 
+calculation, the type of the deposit and the yearly nominal interest. Choose
+currency and period of the deposit in months.</p>
 <form action="#" enctype="application/x-www-form-urlencoded" id="CalcForm"
       method="post"
       onsubmit="javascript: return false;"
@@ -63,7 +64,7 @@ Choose currency and period of the deposit in months.</h2>
 <div class="row">
 <label for="Amount"><span class="label">Amount:</span></label>
 <span class="input">
-<input id="Amount" name="Amount" size="16" maxlength="16" type="text"
+<input id="Amount" name="Amount" size="16" maxlength="16" type="text" autofocus
        onchange="javascript: formatField(document.forms.CalcForm.Amount)" />
 <select name="Currency" onchange="javascript: onChangeCurrency()">
 <option value="BGN">&nbsp; BGN Bulgarian Lev</option>
@@ -137,6 +138,7 @@ Choose currency and period of the deposit in months.</h2>
 </section>
 
 <section id="Output">
+<h2>Results</h2>
 </section>
 
 <footer>
@@ -162,12 +164,12 @@ Investment Bank</a> and are valid since May 12th 2015.</p>
 </p></map>
 <p><a href="terms.en.html">Terms of use</a></p>
 <!-- Copyright -->
-<p class="copyright"><a id="Copyright">Copyright</a> © 2004-2015
+<p class="copyright"><a id="Copyright">Copyright</a> © 2004-2017
 <a href="mailto:gdsotirov@dir.bg">Georgi D. Sotirov</a><br />
-This application can be copyed, distributed and published in
+This application can be copied, distributed and published in
 original or modified version without any restrictions if the upper
 copyright notice and the current paragraph be included in
-all such copyes or derivative works. When distributing modified
+all such copies or derivative works. When distributing modified
 version by all means a link to
 the original version should be included or the original and the modified versions should be
 distributed together.</p>
