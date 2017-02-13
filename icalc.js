@@ -18,7 +18,7 @@
  * ---------------------------------------------------------------------------
  * Description: Interest Calculator UI JavaScript
  * Version: 0.4.0
- * $Id: icalc.js,v 1.21 2017/02/13 13:12:40 gsotirov Exp $
+ * $Id: icalc.js,v 1.22 2017/02/13 14:30:26 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
@@ -32,17 +32,19 @@ var EURInterests = new Array(0.05, 0.10, 0.20, 0.30, 0.40, 0.60, 0.70);
 var CHFInterests = new Array(0.05, 0.10, 0.20, 0.30, 0.00, 0.00, 0.00);
 var GBPInterests = new Array(0.05, 0.10, 0.20, 0.30, 0.40, 0.60, 0.70);
 
-var uisPlsFillAmount = 0;
-var uisPlsCorrAmount = 1;
+var uisPlsFillAmount   = 0;
+var uisPlsCorrAmount   = 1;
 var uisPlsFillInterest = 2;
 var uisPlsCorrInterest = 3;
-var uisPlsFillPeriod = 4;
-var uisPlsCorrPeriod = 5;
-var uisPeriodError = 6;
-var uisMonth = 7;
-var uisAccumulated = 8;
-var uisProfit = 9;
-var uisProfitAcc = 10;
+var uisPlsFillPeriod   = 4;
+var uisPlsCorrPeriod   = 5;
+var uisPeriodError     = 6;
+var uisMonth           = 7;
+var uisBalance         = 8;
+var uisGrossInterest   = 9;
+var uisTaxOnInterest   = 10;
+var uisNetInterest     = 11;
+var uisInterestAcc     = 12;
 
 var UIStringsBG = new Array(
 /*  0 */ "Моля, попълнете полето Сума!",
@@ -54,8 +56,10 @@ var UIStringsBG = new Array(
 /*  6 */ "Периода на депозита трябва да е кратен на броя месеци от типа на депозита!",
 /*  7 */ "Месец",
 /*  8 */ "Салдо",
-/*  9 */ "Печалба",
-/* 10 */ "Натрупана печалба"
+/*  9 */ "Лихва",
+/* 10 */ "Данък върху лихвата",
+/* 11 */ "Нето лихва",
+/* 12 */ "Натрупана лихва"
 );
 
 var UIStringsEN = new Array(
@@ -68,8 +72,10 @@ var UIStringsEN = new Array(
 /*  6 */ "The period of the deposit must be multiple to the month count in the type of the deposit!",
 /*  7 */ "Month",
 /*  8 */ "Balance",
-/*  9 */ "Earned",
-/* 10 */ "Accumulated Earning"
+/*  9 */ "Interest",
+/* 10 */ "Tax on interest",
+/* 11 */ "Net interest",
+/* 12 */ "Accumulated interest"
 );
 
 function loadUIString(id) {
@@ -247,14 +253,21 @@ function calcAndDisplay() {
   OutputTable.setAttribute("cellspacing", "0");
   var cur = document.forms.CalcForm.Currency.value;
   makeTableHeader(OutputTable, loadUIString(uisMonth),
-                               loadUIString(uisAccumulated)+ ", " + cur,
-                               loadUIString(uisProfit) + ", " + cur,
-                               loadUIString(uisProfitAcc) + ", " + cur);
+                               loadUIString(uisGrossInterest) + ", " + cur,
+                               loadUIString(uisTaxOnInterest) + ", " + cur,
+                               loadUIString(uisNetInterest)   + ", " + cur,
+                               loadUIString(uisInterestAcc)   + ", " + cur,
+                               loadUIString(uisBalance)       + ", " + cur);
   var Rows = calc_interest(amount, type, interest, itype, period);
   var OutputTableBody = document.createElement("tbody");
   for ( var i = 1; i < Rows.length; ++i ) {
     var Row = Rows[i];
-    makeTableRow(OutputTableBody, Row[0], formatNumber(Row[1]), formatNumber(Row[2]), formatNumber(Row[3]));
+    makeTableRow(OutputTableBody, Row[0],
+                                  formatNumber(Row[1]),
+                                  formatNumber(Row[2]),
+                                  formatNumber(Row[3]),
+                                  formatNumber(Row[4]),
+                                  formatNumber(Row[5]));
   }
   OutputTable.appendChild(OutputTableBody);
   Output.appendChild(OutputTable);
