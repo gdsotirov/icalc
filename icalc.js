@@ -18,17 +18,17 @@
  * ---------------------------------------------------------------------------
  * Description: Interest Calculator UI JavaScript
  * Version: 0.4.0
- * $Id: icalc.js,v 1.22 2017/02/13 14:30:26 gsotirov Exp $
+ * $Id: icalc.js,v 1.23 2017/07/11 11:19:57 gsotirov Exp $
  */
 
 /* This are the interests for the main currencyes as defined by
- * First Investment Bank as of 2015-05-12
+ * First Investment Bank as of 2017-06-26
  * The arrays should contain the interests for 1, 3, 6, 12, 18, 24 and
  * 36 months deposits in that order.
  */
-var BGNInterests = new Array(0.10, 0.15, 0.25, 0.50, 0.60, 0.80, 0.90);
-var USDInterests = new Array(0.10, 0.15, 0.25, 0.40, 0.50, 0.70, 0.80);
-var EURInterests = new Array(0.05, 0.10, 0.20, 0.30, 0.40, 0.60, 0.70);
+var BGNInterests = new Array(0.05, 0.10, 0.20, 0.35, 0.40, 0.60, 0.70);
+var USDInterests = new Array(0.10, 0.15, 0.30, 0.60, 0.70, 0.80, 1.00);
+var EURInterests = new Array(0.05, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60);
 var CHFInterests = new Array(0.05, 0.10, 0.20, 0.30, 0.00, 0.00, 0.00);
 var GBPInterests = new Array(0.05, 0.10, 0.20, 0.30, 0.40, 0.60, 0.70);
 
