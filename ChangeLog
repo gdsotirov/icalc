@@ -1,12 +1,22 @@
 Intereset Calculator Changes Log
 
+Note: Bugs could be found at https://sotirov-bg.net/bugzilla/
+
+icalc 0.5.0 (2019-02-15)
+* New: Add columns for tax on interests and net interest amount in results
+       table, columns Earned and Accumulated Earning renamed to
+       Interest and Accumulated interest respectively (see bug 170)
+* New: Update default rates as of 2017-06-26
+* Fix: Remove only results table on recalculation and reset
+
 icalc 0.4.0 (2015-08-27)
 * New: Rewrite in HTML5 (see bug 160)
-* New: Term value is set initially with the length in months of depsit's type (see bug 164)
+* New: Term value is set initially with the length in months of deposit's
+       type (see bug 164)
 
 icalc 0.3.2 (2015-08-11)
-* New: Update default rates (see bug 157 - https://sotirov-bg.net/bugzilla/show_bug.cgi?id=157)
-* Fix: Move DOCTYPE and charset definitions in the begining (see bug 158 - https://sotirov-bg.net/bugzilla/show_bug.cgi?id=158)
+* New: Update default rates (see bug 157)
+* Fix: Move DOCTYPE and charset definitions in the begining (see bug 158)
 
 icalc 0.3.1 (2006-12-07)
 ------------------------------------------------------------------------------
@@ -15,8 +25,7 @@ icalc 0.3.1 (2006-12-07)
 icalc 0.3.0 (2006-12-06)
 ------------------------------------------------------------------------------
 * Fixed some HTMl syntax issues
-* Fixed Bug 28 - https://sotirov-bg.net/bugzilla/show_bug.cgi?id=28, which
-solves a unpleasant effect with the form reset
+* Fixed Bug 28, which solves a unpleasant effect with the form reset
 
 icalc 0.2.1 (2006-03-20)
 ------------------------------------------------------------------------------
