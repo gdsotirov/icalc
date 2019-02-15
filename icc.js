@@ -1,5 +1,5 @@
 /* Interest Calculator
- * Copyright (C) 2004-2017  Georgi D. Sotirov
+ * Copyright (C) 2004-2019  Georgi D. Sotirov
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  *
  * ---------------------------------------------------------------------------
  * Description: Interest Calculator Core JavaScript
- * Version: 0.4.0
+ * Version: 0.5.0
  * $Id: icc.js,v 1.12 2017/02/13 14:30:26 gsotirov Exp $
  */
 
