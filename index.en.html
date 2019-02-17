@@ -25,7 +25,7 @@
 <meta name="keywords" content="interest calculator, interest" />
 <meta name="description" content="Calculation of interest on deposits" />
 <meta name="author" content="Georgi D. Sotirov" />
-<meta name="version" content="0.5.0" />
+<meta name="version" content="0.5.1" />
 <meta name="CVS" content="$Id: index.en.html,v 1.32 2017/07/11 11:20:25 gsotirov Exp $" />
 <title>Interest calculator</title>
 <link rel="stylesheet" href="icalc.css" media="screen, print" title="Default" type="text/css" />
@@ -65,8 +65,8 @@ currency and period of the deposit in months.</p>
 <label for="Amount"><span class="label">Amount:</span></label>
 <span class="input">
 <input id="Amount" name="Amount" size="16" maxlength="16" type="text" autofocus
-       onchange="javascript: formatField(document.forms.CalcForm.Amount)" />
-<select name="Currency" onchange="javascript: onChangeCurrency()">
+       onchange="javascript: formatField(document.forms.CalcForm.Amount)" tabindex="1" />
+<select name="Currency" onchange="javascript: onChangeCurrency()" tabindex="2">
 <option value="BGN">&nbsp; BGN Bulgarian Lev</option>
 <option value="USD" selected="selected">$ USD US Dollar</option>
 <option value="EUR">€ EUR Euro</option>
@@ -78,7 +78,7 @@ currency and period of the deposit in months.</p>
 <div class="row">
 <label for="Type"><span class="label">Deposit type:</span>
 <span class="input">
-<select id="Type" name="Type" onchange="javascript: onChangeType()">
+<select id="Type" name="Type" onchange="javascript: onChangeType()" tabindex="3">
 <option value="1" selected="selected">1 month</option>
 <option value="3">3 months</option>
 <option value="6">6 months</option>
@@ -94,7 +94,8 @@ currency and period of the deposit in months.</p>
 <span class="input">
 <input id="Interest" name="Interest" size="6" maxlength="10" type="text"
        title="The interest should be the nominal yearly interest in percents"
-       onchange="javascript: formatField(document.forms.CalcForm.Interest)" />&nbsp;%</span>
+       onchange="javascript: formatField(document.forms.CalcForm.Interest)" 
+       tabindex="4" />&nbsp;%</span>
 </label>
 </div>
 
@@ -103,10 +104,10 @@ currency and period of the deposit in months.</p>
 <span class="input">
 <label for="InterestTypeSimple">
 <input id="InterestTypeSimple" name="InterestType" type="radio"
-       value="simple" />&nbsp;Simple</label><br />
+       value="simple" tabindex="5" />&nbsp;Simple</label><br />
 <label for="InterestTypeCompaund">
 <input checked="checked" id="InterestTypeCompaund" name="InterestType"
-       type="radio" value="compaund" />&nbsp;Compaund</label>
+       type="radio" value="compaund" tabindex="6" />&nbsp;Compaund</label>
 </span>
 </div>
 
@@ -125,10 +126,11 @@ currency and period of the deposit in months.</p>
 <span class="label">
 <button name="Calculate" type="submit"
         onclick="javascript: if (checkForm()) calcAndDisplay();"
-        onkeypress="javascript: if (checkForm()) calcAndDisplay();">
+        onkeypress="javascript: if (checkForm()) calcAndDisplay();"
+        tabindex="7">
 <img src="calc.png" alt="*" height="16" width="16" />&nbsp;Calculate</button></span>
 <span class="input">
-<button name="Clear" type="reset">
+<button name="Clear" type="reset" tabindex="8">
 <img src="clear.png" alt="*" height="16" width="16" />&nbsp;Clear</button></span>
 </div>
 <div class="row">
@@ -150,17 +152,15 @@ and are valid since June 26<sup>th</sup> 2017.</p>
 <map id="ConformanceBar" name="ConformanceBar"><p>
 <!-- Valid XHTML 1.0 -->
 <a href="https://validator.w3.org/check?uri=referer" hreflang="en">
-<img alt="[Valid HTML 5.0 icon]" height="31"
-     longdesc="http://validator.w3.org/" src="valid-html5.png"
+<img alt="[Valid HTML 5.0 icon]" height="31" src="valid-html5.png"
      title="Valid HTML 5.0!" width="88" /></a>
 <!-- Valid CSS -->
 <a href="https://jigsaw.w3.org/css-validator/check/referer" hreflang="en">
-<img alt="[Valid CSS icon]" height="31" longdesc="http://jigsaw.w3.org/"
-     src="valid-css.png" title="Valid CSS!" width="88" /></a>
+<img alt="[Valid CSS icon]" height="31" src="valid-css.png"
+     title="Valid CSS!" width="88" /></a>
 <!-- UTF-8 Encoded -->
-<a href="http://www.unicode.org/" hreflang="en">
-<img alt="[Encoded in UTF-8 icon]" height="31"
-     longdesc="http://www.unicode.org/" src="unicode.png"
+<a href="https://www.unicode.org/" hreflang="en">
+<img alt="[Encoded in UTF-8 icon]" height="31" src="unicode.png"
      title="Encoded in UTF-8!" width="88" /></a>
 </p></map>
 <p><a href="terms.en.html">Terms of use</a></p>
