@@ -17,7 +17,7 @@
  *
  * ---------------------------------------------------------------------------
  * Description: Interest Calculator Core JavaScript
- * Version: 0.5.0
+ * Version: 0.5.1
  * $Id: icc.js,v 1.12 2017/02/13 14:30:26 gsotirov Exp $
  */
 
