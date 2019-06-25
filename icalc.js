@@ -92,9 +92,6 @@ function loadUIString(id) {
 }
 
 function formatNumber(number, float) {
-  var htmltags = document.getElementsByTagName("html");
-  var lang = htmltags[0].lang;
-
   /* Configure number formatting */
   var num = new NumberFormat();
   num.setInputDecimal('.');
@@ -113,6 +110,8 @@ function formatField(obj) {
 }
 
 function checkField(fld, type, uisFill, uisCorr) {
+  var val;
+
   if ( fld.value == "" ) {
     alert(loadUIString(uisFill));
     fld.focus();
@@ -149,7 +148,8 @@ function initForm(forReset) {
 }
 
 function changeInterest(months, curr, element) {
-  var index = 0;
+  var index;
+  var interest;
 
   switch ( parseInt(months) ) {
     case  1: index = 0; break;

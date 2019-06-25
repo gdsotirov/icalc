@@ -33,6 +33,8 @@ function calc_interest(amount, type, interest, itype, period) {
   if ( period % type )
     return 0;
 
+  var profit;
+  var profit_tax;
   var acc = amount; /* accumulated amount */
   var Rows = new Array();
 
