@@ -1,27 +1,23 @@
-			      Interest Calculator
+# Interest Calculator
 
-What is this?
--------------
+## About
 
-Interest calculator (icalc for short) is an web application which calculates
+Interest calculator (icalc for short) is an web application that calculates
 the interest on deposit accounts for a given period of time and shows the
 account balance. It can calculate both simple and compound interest. The
-application is written in XHTML, CSS and Javascript which make it possible to
-run it on every web server as well in a browser from you local machine.
+application is written in HTML 5, CSS and JavaScript, which make it possible
+to run it on every web server as well as in browser on your local machine.
 
-The latest version
-------------------
+## Download
 
-The latest version can always be obtained from the Georgi Sotirov's projects
-page at http://sotirov-bg.net/~gsotirov/projects/
+The latest version could be obtained from [releases](https://github.com/gdsotirov/icalc/releases)
+or from [my FTP server](https://ftp.sotirov-bg.net/pub/icalc/).
 
-Installation
--------------
+## Installation
 
-Please, see the file called INSTALL for details on the installation.
+Please, see the file [INSTALL.md](INSTALL.md) for instructions.
 
-Copying
---------
+## License
 
-Please, see the file called COPYING.
+Please, see file [COPYING](COPYING).
 
