@@ -1,3 +1,6 @@
-You can alaways see the latest stable version of the application at
+# Interest Calculator demonstration
 
-	http://sotirov-bg.net/apps/calc/icalc/
+You can always use the latest version of this application at the following
+URL:
+
+  [http://sotirov-bg.net/apps/calc/icalc/](http://sotirov-bg.net/apps/calc/icalc/)
