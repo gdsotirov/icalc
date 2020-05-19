@@ -13,9 +13,13 @@ to run it on every web server as well as in browser on your local machine.
 The latest version could be obtained from [releases](https://github.com/gdsotirov/icalc/releases)
 or from [my FTP server](https://ftp.sotirov-bg.net/pub/icalc/).
 
+## Demo
+
+For demonstration of the application please, see file [DEMO.md](DEMO.md).
+
 ## Installation
 
-Please, see the file [INSTALL.md](INSTALL.md) for instructions.
+Please, see file [INSTALL.md](INSTALL.md) for instructions.
 
 ## License
 
