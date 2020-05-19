@@ -1,5 +1,5 @@
 /* Interest Calculator
- * Copyright (C) 2004-2019  Georgi D. Sotirov
+ * Copyright (C) 2004-2020  Georgi D. Sotirov
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,16 +20,16 @@
  * Version: 0.5.1
  */
 
-/* This are the interests for the main currencyes as defined by
- * First Investment Bank as of 2019-11-01
- * The arrays should contain the interests for 1, 3, 6, 12, 18, 24 and
- * 36 months deposits in that order.
+/* This are the interests for the main currencies as defined by
+ * First Investment Bank as of 2020-04-30
+ * The arrays should contain the interests for 1, 3, 6, 12, 18, 24 and 36
+ * months deposits in this order.
  */
-var BGNInterests = new Array(0.03, 0.05, 0.15, 0.30, 0.35, 0.40, 0.50);
-var USDInterests = new Array(0.05, 0.10, 0.20, 0.50, 0.60, 0.70, 0.90);
-var EURInterests = new Array(0.03, 0.05, 0.15, 0.30, 0.35, 0.40, 0.50);
-var CHFInterests = new Array(0.03, 0.05, 0.15, 0.30, 0.00, 0.00, 0.00);
-var GBPInterests = new Array(0.03, 0.05, 0.15, 0.30, 0.35, 0.40, 0.50);
+var BGNInterests = new Array(0.01, 0.03, 0.10, 0.25, 0.30, 0.35, 0.45);
+var USDInterests = new Array(0.01, 0.03, 0.10, 0.25, 0.30, 0.35, 0.45);
+var EURInterests = new Array(0.01, 0.03, 0.10, 0.25, 0.30, 0.35, 0.45);
+var CHFInterests = new Array(0.01, 0.03, 0.10, 0.25, 0.00, 0.00, 0.00);
+var GBPInterests = new Array(0.01, 0.03, 0.10, 0.25, 0.30, 0.35, 0.45);
 
 var uisPlsFillAmount   = 0;
 var uisPlsCorrAmount   = 1;
