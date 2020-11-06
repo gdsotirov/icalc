@@ -50,7 +50,7 @@ function calc_interest(amount, type, interest, itype, period) {
     }
 
     /* According to art. 38, par. 13 and art. 46, par. 4 of ЗДДФЛ
-     * see http://www.lex.bg/bg/laws/ldoc/2135538631
+     * see https://www.lex.bg/bg/laws/ldoc/2135538631
      */
     profit_tax = profit * 8 / 100;
 
