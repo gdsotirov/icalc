@@ -25,11 +25,11 @@
  * The arrays should contain the interests for 1, 3, 6, 12, 18, 24 and 36
  * months deposits in this order.
  */
-var BGNInterests = new Array(0.01, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
-var USDInterests = new Array(0.01, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
-var EURInterests = new Array(0.01, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
-var CHFInterests = new Array(0.01, 0.01, 0.03, 0.05, 0.00, 0.00, 0.00);
-var GBPInterests = new Array(0.01, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
+var BGNInterests = new Array(0.001, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
+var USDInterests = new Array(0.001, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
+var EURInterests = new Array(0.001, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
+var CHFInterests = new Array(0.001, 0.01, 0.03, 0.05, 0.00, 0.00, 0.00);
+var GBPInterests = new Array(0.001, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
 
 var uisPlsFillAmount   = 0;
 var uisPlsCorrAmount   = 1;
@@ -90,12 +90,12 @@ function loadUIString(id) {
   else return "???";
 }
 
-function formatNumber(number, float) {
+function formatNumber(number, places = 2) {
   /* Configure number formatting */
   var num = new NumberFormat();
   num.setInputDecimal('.');
   num.setSeparators(true, ' ', '.');
-  num.setPlaces('2', false);
+  num.setPlaces(places, false);
   num.setCurrency(false);
   num.setCurrencyPosition(num.LEFT_OUTSIDE);
   num.setNegativeFormat(num.LEFT_DASH);
@@ -104,8 +104,8 @@ function formatNumber(number, float) {
   return num.toFormatted();
 }
 
-function formatField(obj) {
-  obj.value = formatNumber(obj.value.replace(/,/, "."));
+function formatField(obj, places) {
+  obj.value = formatNumber(obj.value.replace(/,/, "."), places);
 }
 
 function checkField(fld, type, uisFill, uisCorr) {
@@ -160,11 +160,11 @@ function changeInterest(months, curr, element) {
     case 36: index = 6; break;
   }
   switch ( curr ) {
-    case "BGN": interest = formatNumber(BGNInterests[index]); break;
-    case "USD": interest = formatNumber(USDInterests[index]); break;
-    case "EUR": interest = formatNumber(EURInterests[index]); break;
-    case "CHF": interest = formatNumber(CHFInterests[index]); break;
-    case "GBP": interest = formatNumber(GBPInterests[index]); break;
+    case "BGN": interest = formatNumber(BGNInterests[index], 3); break;
+    case "USD": interest = formatNumber(USDInterests[index], 3); break;
+    case "EUR": interest = formatNumber(EURInterests[index], 3); break;
+    case "CHF": interest = formatNumber(CHFInterests[index], 3); break;
+    case "GBP": interest = formatNumber(GBPInterests[index], 3); break;
     default   : interest = formatNumber(0.0); break;
   }
   element.defaultValue = interest;
