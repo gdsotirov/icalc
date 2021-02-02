@@ -1,5 +1,5 @@
 /* Interest Calculator
- * Copyright (C) 2004-2020  Georgi D. Sotirov
+ * Copyright (C) 2004-2021  Georgi D. Sotirov
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,15 +21,15 @@
  */
 
 /* This are the interests for the main currencies as defined by
- * First Investment Bank as of 2020-11-10
+ * First Investment Bank as of 2021-02-03
  * The arrays should contain the interests for 1, 3, 6, 12, 18, 24 and 36
  * months deposits in this order.
  */
-var BGNInterests = new Array(0.01, 0.03, 0.05, 0.10, 0.10, 0.10, 0.10);
-var USDInterests = new Array(0.01, 0.03, 0.05, 0.10, 0.10, 0.10, 0.10);
-var EURInterests = new Array(0.01, 0.03, 0.05, 0.10, 0.10, 0.10, 0.10);
-var CHFInterests = new Array(0.01, 0.03, 0.05, 0.10, 0.00, 0.00, 0.00);
-var GBPInterests = new Array(0.01, 0.03, 0.05, 0.10, 0.10, 0.10, 0.10);
+var BGNInterests = new Array(0.01, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
+var USDInterests = new Array(0.01, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
+var EURInterests = new Array(0.01, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
+var CHFInterests = new Array(0.01, 0.01, 0.03, 0.05, 0.00, 0.00, 0.00);
+var GBPInterests = new Array(0.01, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
 
 var uisPlsFillAmount   = 0;
 var uisPlsCorrAmount   = 1;
