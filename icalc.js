@@ -44,6 +44,7 @@ var uisGrossInterest   = 9;
 var uisTaxOnInterest   = 10;
 var uisNetInterest     = 11;
 var uisInterestAcc     = 12;
+var uisNotOfferedCurr  = 13;
 
 var UIStringsBG = new Array(
 /*  0 */ "Моля, попълнете полето Сума!",
@@ -58,7 +59,8 @@ var UIStringsBG = new Array(
 /*  9 */ "Лихва",
 /* 10 */ "Данък върху лихвата",
 /* 11 */ "Нето лихва",
-/* 12 */ "Натрупана лихва"
+/* 12 */ "Натрупана лихва",
+/* 13 */ "Не се предлага в момента!"
 );
 
 var UIStringsEN = new Array(
@@ -74,7 +76,8 @@ var UIStringsEN = new Array(
 /*  9 */ "Interest",
 /* 10 */ "Tax on interest",
 /* 11 */ "Net interest",
-/* 12 */ "Accumulated interest"
+/* 12 */ "Accumulated interest",
+/* 13 */ "Not offered currently!"
 );
 
 function loadUIString(id) {
@@ -150,8 +153,12 @@ function changeInterest(months, curr, element) {
   var index;
   var interest;
 
+  document.getElementById("type_warn").innerHTML = "";
+
   switch ( parseInt(months) ) {
-    case  1: index = 0; break;
+    case  1: index = 0;
+      document.getElementById("type_warn").innerHTML = loadUIString(uisNotOfferedCurr);
+      break;
     case  3: index = 1; break;
     case  6: index = 2; break;
     case 12: index = 3; break;

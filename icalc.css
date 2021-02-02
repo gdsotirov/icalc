@@ -1,5 +1,5 @@
 /* Interest Calculator
- * Copyright (C) 2004-2019  Georgi D. Sotirov
+ * Copyright (C) 2004-2021  Georgi D. Sotirov
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -170,6 +170,16 @@
     color: inherit;
   }
 
+  span#type_warn {
+    animation-direction: alternate;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-name: pulse_warn;
+    color: darkred;
+    font-size: 100%;
+    opacity: 1;
+  }
+
   .no_screen {
     display: none;
   }
@@ -180,7 +190,75 @@
     border: 0 none;
   }
 
+  /* This does not seem to work in Firefox 85.0 - the text is rendered as it
+   * last appeared on screen with the animation, instead of being drawn in
+   * darkred without animation as requested. The same works fine in other
+   * browsers e.g. Chrome 88, Edge 88 and Opera 73.
+   * TODO: Check for or report bug.
+   */
+  span#type_warn {
+    color: darkred;
+  }
+
   .no_print {
     display: none;
   }
 }
+
+@keyframes pulse_warn {
+  0% {
+    color: darkred;
+    opacity: 1;
+  }
+
+  10% {
+    color: red;
+    opacity: 0.9;
+  }
+
+  20% {
+    color: red;
+    opacity: 0.8;
+  }
+
+  30% {
+    color: red;
+    opacity: 0.7;
+  }
+
+  40% {
+    color: red;
+    opacity: 0.6;
+  }
+
+  50% {
+    color: red;
+    opacity: 0.5;
+  }
+
+  60% {
+    color: red;
+    opacity: 0.6;
+  }
+
+  70% {
+    color: red;
+    opacity: 0.7;
+  }
+
+  80% {
+    color: red;
+    opacity: 0.8;
+  }
+
+  90% {
+    color: red;
+    opacity: 0.9;
+  }
+
+  100% {
+    color: darkred;
+    opacity: 1;
+  }
+}
+
