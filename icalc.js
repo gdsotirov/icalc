@@ -1,4 +1,5 @@
-/* Interest Calculator
+/**
+ * Interest Calculator
  * Copyright (C) 2004-2021  Georgi D. Sotirov
  *
  * This program is free software; you can redistribute it and/or modify
@@ -16,8 +17,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * ---------------------------------------------------------------------------
- * Description: Interest Calculator UI JavaScript
- * Version: 0.5.1
+ * @file Interest Calculator UI JavaScript
+ * @version 0.5.1
+ * @author Georgi D. Sotirov <gdsotirov@gmail.com>
  */
 
 /* This are the interests for the main currencies as defined by
@@ -80,6 +82,11 @@ var UIStringsEN = new Array(
 /* 13 */ "Not offered currently!"
 );
 
+/**
+ * Loads UI string base on language setting of html tag
+ * @param {number} id 
+ * @returns String in specific language.
+ */
 function loadUIString(id) {
   var htmltags = document.getElementsByTagName("html");
   var lang = htmltags[0].lang;
@@ -93,6 +100,12 @@ function loadUIString(id) {
   else return "???";
 }
 
+/**
+ * Formats number with specified precision
+ * @param {number} number Number to format
+ * @param {number} places Precision in decimal places
+ * @returns String representation of the number
+ */
 function formatNumber(number, places = 2) {
   /* Configure number formatting */
   var num = new NumberFormat();
@@ -107,10 +120,23 @@ function formatNumber(number, places = 2) {
   return num.toFormatted();
 }
 
+/**
+ * Formats the value of and HTML input element
+ * @param {object} obj An HTML input element
+ * @param {number} places Precision in decimal places
+ */
 function formatField(obj, places) {
   obj.value = formatNumber(obj.value.replace(/,/, "."), places);
 }
 
+/**
+ * Checks the value of an HTML input element 
+ * @param {object} fld An HTML input element
+ * @param {*} type Value type. Either 'float' or 'int'
+ * @param {*} uisFill UI string for when field value is empty
+ * @param {*} uisCorr UI string for when field value is wrong
+ * @returns True if the value in the field is correct, otherwise false
+ */
 function checkField(fld, type, uisFill, uisCorr) {
   var val;
 
@@ -135,6 +161,10 @@ function checkField(fld, type, uisFill, uisCorr) {
   return true;
 }
 
+/**
+ * Initializes calculator form
+ * @param {boolean} forReset Whether form is being reset or not
+ */
 function initForm(forReset) {
   forReset = typeof(forReset) != 'undefined' ? forReset : false;
   var Form = document.forms.CalcForm;
@@ -149,6 +179,12 @@ function initForm(forReset) {
   }
 }
 
+/**
+ * Updates yearly interest field based on its arguments
+ * @param {number} months Selected deposit type
+ * @param {number} curr Selected currency
+ * @param {object} element An HTML input element
+ */
 function changeInterest(months, curr, element) {
   var index;
   var interest;
@@ -178,12 +214,18 @@ function changeInterest(months, curr, element) {
   element.defaultValue = interest;
 }
 
+/**
+ * Handler for change of currency in calculator form
+ */
 function onChangeCurrency () {
   var form  = document.forms.CalcForm;
 
   changeInterest(form.Type.value, form.Currency.value, form.Interest);
 }
 
+/**
+ * Handler for change of deposit type in calculator form
+ */
 function onChangeType() {
   var form    = document.forms.CalcForm;
   var type    = form.Type;
@@ -201,6 +243,9 @@ function onChangeType() {
   }
 }
 
+/**
+ * Performs calculator form reset
+ */
 function doReset() {
   var Output = document.getElementById("Output");
   var OutputTable = document.getElementById("OutputTable");
@@ -210,6 +255,10 @@ function doReset() {
   initForm(true);
 }
 
+/**
+ * Checks values in calculator form
+ * @returns True if all values are correct, otherwise false
+ */
 function checkForm() {
   var form = document.forms.CalcForm;
 
@@ -241,6 +290,10 @@ function checkForm() {
   return true;
 }
 
+/**
+ * Calculates and displays results in table
+ * @returns Always true
+ */
 function calcAndDisplay() {
   var form = document.forms.CalcForm;
   var amount = parseFloat(form.Amount.value.replace(/\s+/, ""));
@@ -282,12 +335,20 @@ function calcAndDisplay() {
   return true;
 }
 
-function removeAllChilds(node) {
-  if ( node )
-    while ( node.firstChild )
-      node.removeChild(node.firstChild);
+/**
+ * Removes all children elements of an element
+ * @param {object} elem An HTML element (any)
+ */
+ function removeAllChildren(elem) {
+  while ( elem.firstChild ) {
+    elem.removeChild(elem.lastChild);
+  }
 }
 
+/**
+ * Constructs results table header
+ * @param {object} otable An HTML table element
+ */
 function makeTableHeader(otable) {
   var new_tr = document.createElement("tr");
   for ( var i = 1; i < arguments.length; ++i ) {
@@ -300,6 +361,10 @@ function makeTableHeader(otable) {
   otable.appendChild(new_thead);
 }
 
+/**
+ * Constructs results table data row
+ * @param {object} otable An HTML table element
+ */
 function makeTableRow(otable) {
   var new_tr = document.createElement("tr");
   for ( var i = 1; i < arguments.length; ++i ) {
@@ -310,6 +375,11 @@ function makeTableRow(otable) {
   otable.appendChild(new_tr);
 }
 
+/**
+ * Retrieves the value of a radio button
+ * @param {object} radio An HTML radio buttons input
+ * @returns The selected radio button value, otherwise undefined
+ */
 function getRadioValue(radio) {
   var i = 0;
   while ( i < radio.length ) {
@@ -320,8 +390,11 @@ function getRadioValue(radio) {
   return;
 }
 
-/* Description: Retrieve the default selected element from an option group.
- *              (e.g. <option id="default" selected="selected">Default</option>
+/**
+ * Retrieves the default selected element from an option group (e.g.
+ * <option id="default" selected="selected">Default</option>)
+ * @param {object} element An HTML select element
+ * @returns The selected option value, otherwise undefined
  */
 function getDefaultSelected(element) {
   if ( element.options ) {
@@ -335,15 +408,5 @@ function getDefaultSelected(element) {
     return element.options[0];
   }
   return;
-}
-
-/**
- * Removes all children of an element
- * @param {*} elem Any HTML element
- */
-function removeAllChildren(elem) {
-  while (elem.firstChild) {
-    elem.removeChild(elem.lastChild);
-  }
 }
 

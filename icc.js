@@ -1,5 +1,6 @@
-/* Interest Calculator
- * Copyright (C) 2004-2019  Georgi D. Sotirov
+/**
+ * Interest Calculator
+ * Copyright (C) 2004-2021  Georgi D. Sotirov
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,17 +17,19 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * ---------------------------------------------------------------------------
- * Description: Interest Calculator Core JavaScript
- * Version: 0.5.1
+ * @file Interest Calculator Core JavaScript
+ * @version 0.5.1
+ * @author Georgi D. Sotirov <gdsotirov@gmail.com>
  */
 
-/* Function   : calc_interest
- * Description: Calculate interest
- * Parameters : amount   - the deposed amount
- *              type     - type of the deposit (months)
- *              interest - yearly interest
- *              itype    - interest type (simple or compaund)
- *              period   - the period of the deposit
+/**
+ * Calculate table with interest amount on a deposit account for a given period
+ * @param {number} amount Deposed amount
+ * @param {number} type Type of the deposit (in months)
+ * @param {*} interest Yearly interest
+ * @param {*} itype Interest type (simple or compound)
+ * @param {*} period Period of the deposit (in months)
+ * @returns 
  */
 function calc_interest(amount, type, interest, itype, period) {
   if ( period % type )
