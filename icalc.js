@@ -153,11 +153,12 @@ function changeInterest(months, curr, element) {
   var index;
   var interest;
 
-  document.getElementById("type_warn").innerHTML = "";
+  var type_warn = document.getElementById("type_warn");
+  removeAllChildren(type_warn);
 
   switch ( parseInt(months) ) {
     case  1: index = 0;
-      document.getElementById("type_warn").innerHTML = loadUIString(uisNotOfferedCurr);
+      type_warn.appendChild(document.createTextNode(loadUIString(uisNotOfferedCurr)));
       break;
     case  3: index = 1; break;
     case  6: index = 2; break;
@@ -334,5 +335,15 @@ function getDefaultSelected(element) {
     return element.options[0];
   }
   return;
+}
+
+/**
+ * Removes all children of an element
+ * @param {*} elem Any HTML element
+ */
+function removeAllChildren(elem) {
+  while (elem.firstChild) {
+    elem.removeChild(elem.lastChild);
+  }
 }
 
