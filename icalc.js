@@ -23,15 +23,15 @@
  */
 
 /* This are the interests for the main currencies as defined by
- * First Investment Bank as of 2021-02-03
+ * First Investment Bank as of 2021-02-17
  * The arrays should contain the interests for 1, 3, 6, 12, 18, 24 and 36
  * months deposits in this order.
  */
-var BGNInterests = new Array(0.001, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
-var USDInterests = new Array(0.001, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
-var EURInterests = new Array(0.001, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
-var CHFInterests = new Array(0.001, 0.01, 0.03, 0.05, 0.00, 0.00, 0.00);
-var GBPInterests = new Array(0.001, 0.01, 0.03, 0.05, 0.05, 0.05, 0.05);
+var BGNInterests = new Array(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+var USDInterests = new Array(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+var EURInterests = new Array(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+var CHFInterests = new Array(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+var GBPInterests = new Array(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
 var uisPlsFillAmount   = 0;
 var uisPlsCorrAmount   = 1;
