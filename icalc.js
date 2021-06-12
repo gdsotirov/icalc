@@ -84,7 +84,7 @@ var UIStringsEN = new Array(
 
 /**
  * Loads UI string base on language setting of html tag
- * @param {number} id 
+ * @param {number} id UI string identifier
  * @returns String in specific language.
  */
 function loadUIString(id) {
@@ -130,7 +130,7 @@ function formatField(obj, places) {
 }
 
 /**
- * Checks the value of an HTML input element 
+ * Checks the value of an HTML input element
  * @param {object} fld An HTML input element
  * @param {string} type Value type. Either 'float' or 'int'
  * @param {number} uisFill UI string index for when field value is empty
