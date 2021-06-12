@@ -132,9 +132,9 @@ function formatField(obj, places) {
 /**
  * Checks the value of an HTML input element 
  * @param {object} fld An HTML input element
- * @param {*} type Value type. Either 'float' or 'int'
- * @param {*} uisFill UI string for when field value is empty
- * @param {*} uisCorr UI string for when field value is wrong
+ * @param {string} type Value type. Either 'float' or 'int'
+ * @param {number} uisFill UI string index for when field value is empty
+ * @param {number} uisCorr UI string index for when field value is wrong
  * @returns True if the value in the field is correct, otherwise false
  */
 function checkField(fld, type, uisFill, uisCorr) {

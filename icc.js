@@ -29,7 +29,7 @@
  * @param {*} interest Yearly interest
  * @param {*} itype Interest type (simple or compound)
  * @param {*} period Period of the deposit (in months)
- * @returns 
+ * @returns A two dimensional array with calculated interest amount per period
  */
 function calc_interest(amount, type, interest, itype, period) {
   if ( period % type )
