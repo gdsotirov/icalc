@@ -1,6 +1,4 @@
-Interest Calculator Changes Log
-
-Note: Bugs could be found at https://sotirov-bg.net/bugzilla/
+# Interest Calculator Changes Log
 
 icalc 0.5.1 (2019-02-17)
 ------------------------------------------------------------------------------
